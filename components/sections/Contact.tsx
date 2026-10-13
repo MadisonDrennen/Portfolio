@@ -1,7 +1,7 @@
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE_GRID } from "@/components/ui/grid";
 
-const EMAIL = "madison.drennen7@gmail.com";
+const EMAIL = "madisoninmarketing@gmail.com";
 
 export default function Contact() {
   // Platforms that share a handle are grouped: each platform name in the

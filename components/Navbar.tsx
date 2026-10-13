@@ -186,7 +186,7 @@ export default function Navbar() {
           </nav>
 
           <a
-            href="mailto:madison.drennen7@gmail.com"
+            href="mailto:madisoninmarketing@gmail.com"
             className="hidden md:inline-flex btn-primary px-5 py-2.5 text-[0.6rem]"
           >
             Let&apos;s Talk
@@ -264,10 +264,10 @@ export default function Navbar() {
           </button>
 
           <a
-            href="mailto:madison.drennen7@gmail.com"
+            href="mailto:madisoninmarketing@gmail.com"
             className="mt-4 font-mono text-xs font-medium tracking-[0.22em] uppercase text-berry"
           >
-            madison.drennen7@gmail.com
+            madisoninmarketing@gmail.com
           </a>
         </div>
       </div>

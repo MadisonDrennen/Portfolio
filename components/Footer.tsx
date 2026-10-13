@@ -30,7 +30,7 @@ export default function Footer() {
     { label: "TikTok", href: "https://www.tiktok.com/@madisoninmarketing", Icon: TikTok },
     { label: "Pinterest", href: "https://www.pinterest.com/madisoninmarketing/", Icon: Pinterest },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/madison-drennen-465685162/", Icon: Linkedin },
-    { label: "Email", href: "mailto:madison.drennen7@gmail.com", Icon: Mail },
+    { label: "Email", href: "mailto:madisoninmarketing@gmail.com", Icon: Mail },
   ];
 
   return (

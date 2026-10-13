@@ -93,7 +93,7 @@ export default function FeaturedWork() {
           <p className="font-sans text-sm font-normal text-snow/55 mb-5">
             More work, process notes, and explorations, happy to share.
           </p>
-          <a href="mailto:madison.drennen7@gmail.com" className="btn-primary px-8 py-4">
+          <a href="mailto:madisoninmarketing@gmail.com" className="btn-primary px-8 py-4">
             Say Hi
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
