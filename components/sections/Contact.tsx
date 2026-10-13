@@ -29,9 +29,76 @@ export default function Contact() {
         </RevealOnScroll>
 
         <RevealOnScroll delay={1}>
-          <p className="font-sans text-base md:text-lg font-normal text-ink/70 leading-relaxed mb-14 max-w-xl">
+          <p className="font-sans text-base md:text-lg font-normal text-ink/70 leading-relaxed mb-12 max-w-xl">
             Open to freelance work, brand collaborations, and design partnerships.
           </p>
+        </RevealOnScroll>
+
+        {/* Specialty: website redesign */}
+        <RevealOnScroll delay={2}>
+          <div className="glass-tile-light p-7 sm:p-9 md:p-10 mb-14">
+            <div className="grid md:grid-cols-12 gap-8 md:gap-10">
+              <div className="md:col-span-5">
+                <p className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry mb-4">
+                  ✦ &nbsp; My Specialty
+                </p>
+                <h3
+                  className="font-display font-bold text-ink leading-[1.0] tracking-[-0.04em] mb-4 pb-1"
+                  style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.5rem)" }}
+                >
+                  Website <span className="text-berry">redesigns</span>
+                </h3>
+                <p className="font-sans text-sm md:text-base text-ink/70 leading-relaxed mb-6">
+                  Taking a site that feels dated or disconnected and rebuilding it so it looks like the brand, reads clearly, and gives visitors a reason to reach out.
+                </p>
+
+                <p className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-ink/45 mb-2.5">
+                  Recent redesigns
+                </p>
+                <div className="flex flex-wrap gap-2 mb-7">
+                  {[
+                    { label: "GYMRISE", href: "/work/gymrise" },
+                    { label: "Social Mulli", href: "/work/social-mulli" },
+                  ].map((p) => (
+                    <a key={p.href} href={p.href} className="tag-light">
+                      {p.label} ↗
+                    </a>
+                  ))}
+                </div>
+
+                <a
+                  href="mailto:madison.drennen7@gmail.com?subject=Website%20redesign"
+                  className="btn-primary px-6 py-3.5 text-[0.62rem]"
+                >
+                  Start a Redesign
+                  <span>→</span>
+                </a>
+              </div>
+
+              <ol className="md:col-span-7 border-t border-ink/10">
+                {[
+                  { n: "01", t: "Audit & strategy", d: "What's working, what isn't, and what the site actually needs to do for the business." },
+                  { n: "02", t: "Design system", d: "Layouts, type, and visuals that match the brand on every page, not just the homepage." },
+                  { n: "03", t: "Build & launch", d: "Designed and built end to end, responsive, and ready to go live." },
+                ].map((s) => (
+                  <li
+                    key={s.n}
+                    className="grid grid-cols-[48px_1fr] gap-5 py-5 border-b border-ink/10 items-baseline"
+                  >
+                    <span className="font-mono text-xs font-medium tracking-[0.22em] text-berry">
+                      {s.n}
+                    </span>
+                    <div>
+                      <p className="font-display text-lg md:text-xl font-bold text-ink tracking-[-0.02em] mb-1">
+                        {s.t}
+                      </p>
+                      <p className="font-sans text-sm text-ink/65 leading-relaxed">{s.d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </RevealOnScroll>
 
         {/* Featured email */}
