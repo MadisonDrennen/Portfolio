@@ -2,11 +2,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Linkedin, Mail } from "lucide-react";
 
+type IconProps = { size?: number; strokeWidth?: number };
+
+// lucide has no TikTok / Pinterest marks; outline versions to match its style.
+function TikTok({ size = 20, strokeWidth = 1.5 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinejoin="round" aria-hidden="true">
+      <path d="M16 8.2a5.5 5.5 0 0 0 4 1.6V6.3a4 4 0 0 1-4-4h-3.3v12.8a2.8 2.8 0 1 1-2.8-2.8c.3 0 .6 0 .9.1V9a6.1 6.1 0 1 0 5.2 6.1V8.2z" />
+    </svg>
+  );
+}
+
+function Pinterest({ size = 20, strokeWidth = 1.5 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M10.6 8.3c3.1-.9 5.6.9 5.4 3.6-.2 2.3-1.8 3.8-3.7 3.6-1.1-.1-1.8-.9-1.6-1.9M11.6 10.4 9.2 20.6" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
   const socials = [
-    { label: "Instagram", href: "https://www.instagram.com/drennenmadison/", Icon: Instagram },
+    { label: "Instagram", href: "https://www.instagram.com/madisoninmarketing/", Icon: Instagram },
+    { label: "TikTok", href: "https://www.tiktok.com/@madisoninmarketing", Icon: TikTok },
+    { label: "Pinterest", href: "https://www.pinterest.com/madisoninmarketing/", Icon: Pinterest },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/madison-drennen-465685162/", Icon: Linkedin },
     { label: "Email", href: "mailto:madison.drennen7@gmail.com", Icon: Mail },
   ];

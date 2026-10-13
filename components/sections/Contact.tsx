@@ -4,7 +4,9 @@ import SectionLabel from "@/components/ui/SectionLabel";
 export default function Contact() {
   const socials = [
     { label: "Phone", value: "720.550.0655", href: "tel:+17205500655" },
-    { label: "Instagram", value: "@drennenmadison", href: "https://www.instagram.com/drennenmadison/" },
+    { label: "Instagram", value: "@madisoninmarketing", href: "https://www.instagram.com/madisoninmarketing/" },
+    { label: "TikTok", value: "@madisoninmarketing", href: "https://www.tiktok.com/@madisoninmarketing" },
+    { label: "Pinterest", value: "@madisoninmarketing", href: "https://www.pinterest.com/madisoninmarketing/" },
     { label: "LinkedIn", value: "Madison Drennen", href: "https://www.linkedin.com/in/madison-drennen-465685162/" },
   ];
 
@@ -59,6 +61,7 @@ export default function Contact() {
                   {[
                     { label: "GYMRISE", href: "/work/gymrise" },
                     { label: "Social Mulli", href: "/work/social-mulli" },
+                    { label: "This Portfolio", href: "/" },
                   ].map((p) => (
                     <a key={p.href} href={p.href} className="tag-light">
                       {p.label} ↗
@@ -121,7 +124,7 @@ export default function Contact() {
 
         {/* Contact rows */}
         <RevealOnScroll delay={3}>
-          <div className="grid md:grid-cols-3 gap-6 md:gap-10 pt-6 border-t border-ink/10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-6 md:gap-x-10 gap-y-6 md:gap-y-8 pt-6 border-t border-ink/10">
             {socials.map((c) => (
               <div key={c.label} className="flex flex-col gap-2">
                 <span className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-ink/45">
