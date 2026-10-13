@@ -104,7 +104,7 @@ export default function Contact() {
         <RevealOnScroll variant="clip" className="mt-8">
           <h2
             className="font-display font-bold text-ink leading-[1.0] tracking-[-0.05em] mb-12 pb-2"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+            style={{ fontSize: "clamp(2.25rem, 4vw, 3.5rem)" }}
           >
             Let&apos;s make something{" "}
             <span className="text-berry">memorable</span>
