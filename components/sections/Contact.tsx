@@ -2,13 +2,26 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function Contact() {
-  const socials = [
-    { label: "Phone", value: "720.550.0655", href: "tel:+17205500655" },
-    { label: "Instagram", value: "@madisoninmarketing", href: "https://www.instagram.com/madisoninmarketing/" },
-    { label: "TikTok", value: "@madisoninmarketing", href: "https://www.tiktok.com/@madisoninmarketing" },
-    { label: "Pinterest", value: "@madisoninmarketing", href: "https://www.pinterest.com/madisoninmarketing/" },
-    { label: "LinkedIn", value: "Madison Drennen", href: "https://www.linkedin.com/in/madison-drennen-465685162/" },
+  // Platforms that share a handle are grouped: each platform name in the
+  // label is its own link, and the handle links to the first one.
+  const socials: { value: string; links: { label: string; href: string }[] }[] = [
+    { value: "720.550.0655", links: [{ label: "Phone", href: "tel:+17205500655" }] },
+    {
+      value: "@madisoninmarketing",
+      links: [
+        { label: "Instagram", href: "https://www.instagram.com/madisoninmarketing/" },
+        { label: "TikTok", href: "https://www.tiktok.com/@madisoninmarketing" },
+        { label: "Pinterest", href: "https://www.pinterest.com/madisoninmarketing/" },
+      ],
+    },
+    {
+      value: "Madison Drennen",
+      links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/madison-drennen-465685162/" }],
+    },
   ];
+
+  const ext = (href: string) =>
+    href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
   return (
     <section id="contact" data-nav-theme="light" className="relative py-28 md:py-36 bg-ivory text-ink overflow-hidden">
@@ -22,18 +35,12 @@ export default function Contact() {
 
         <RevealOnScroll variant="clip" className="mt-8">
           <h2
-            className="font-display font-bold text-ink leading-[1.0] tracking-[-0.05em] mb-10 pb-2"
+            className="font-display font-bold text-ink leading-[1.0] tracking-[-0.05em] mb-12 pb-2"
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
           >
             Let&apos;s make something{" "}
             <span className="text-berry">memorable</span>
           </h2>
-        </RevealOnScroll>
-
-        <RevealOnScroll delay={1}>
-          <p className="font-sans text-base md:text-lg font-normal text-ink/70 leading-relaxed mb-12 max-w-xl">
-            Open to freelance work, brand collaborations, and design partnerships.
-          </p>
         </RevealOnScroll>
 
         {/* Specialty: website redesign */}
@@ -124,16 +131,26 @@ export default function Contact() {
 
         {/* Contact rows */}
         <RevealOnScroll delay={3}>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-6 md:gap-x-10 gap-y-6 md:gap-y-8 pt-6 border-t border-ink/10">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-10 pt-6 border-t border-ink/10">
             {socials.map((c) => (
-              <div key={c.label} className="flex flex-col gap-2">
+              <div key={c.value} className="flex flex-col gap-2">
                 <span className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-ink/45">
-                  {c.label}
+                  {c.links.map((l, i) => (
+                    <span key={l.label}>
+                      {i > 0 && <span className="mx-1.5 text-ink/25">·</span>}
+                      {c.links.length > 1 ? (
+                        <a href={l.href} {...ext(l.href)} className="hover:text-berry transition-colors duration-300">
+                          {l.label}
+                        </a>
+                      ) : (
+                        l.label
+                      )}
+                    </span>
+                  ))}
                 </span>
                 <a
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  href={c.links[0].href}
+                  {...ext(c.links[0].href)}
                   className="font-display text-xl md:text-2xl font-semibold text-ink hover:text-berry transition-colors duration-300 tracking-[-0.02em]"
                 >
                   {c.value}
