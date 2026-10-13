@@ -29,23 +29,9 @@ export default function Contact() {
       <div className="chrome-aura chrome-aura--icy bottom-0 -left-32 w-[30rem] h-[30rem] opacity-45" />
 
       <div className="relative mx-auto w-full max-w-[1040px] px-6 sm:px-8 md:px-12 lg:px-20">
-        <RevealOnScroll>
-          <SectionLabel label="Get in Touch" />
-        </RevealOnScroll>
-
-        <RevealOnScroll variant="clip" className="mt-8">
-          <h2
-            className="font-display font-bold text-ink leading-[1.0] tracking-[-0.05em] mb-12 pb-2"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
-          >
-            Let&apos;s make something{" "}
-            <span className="text-berry">memorable</span>
-          </h2>
-        </RevealOnScroll>
-
         {/* Specialty: website redesign */}
-        <RevealOnScroll delay={2}>
-          <div className="glass-tile-light p-7 sm:p-9 md:p-10 mb-14">
+        <RevealOnScroll>
+          <div className="glass-tile-light p-7 sm:p-9 md:p-10 mb-20 md:mb-24">
             <div className="grid md:grid-cols-12 gap-8 md:gap-10">
               <div className="md:col-span-5">
                 <p className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry mb-4">
@@ -109,6 +95,20 @@ export default function Contact() {
               </ol>
             </div>
           </div>
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <SectionLabel label="Get in Touch" />
+        </RevealOnScroll>
+
+        <RevealOnScroll variant="clip" className="mt-8">
+          <h2
+            className="font-display font-bold text-ink leading-[1.0] tracking-[-0.05em] mb-12 pb-2"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+          >
+            Let&apos;s make something{" "}
+            <span className="text-berry">memorable</span>
+          </h2>
         </RevealOnScroll>
 
         {/* Featured email */}
