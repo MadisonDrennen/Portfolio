@@ -57,7 +57,7 @@ export default function MarqueeStrip() {
       id="marquee-strip"
       aria-label="Tools and platforms I work with"
       data-nav-theme="light"
-      className="relative bg-ivory text-ink"
+      className="relative bg-ivory text-ink overflow-hidden"
     >
       {/* Marquee row */}
       <div className="marquee-wrapper marquee-pause-hover relative py-5 border-y border-ink/10">

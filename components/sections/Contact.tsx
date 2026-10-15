@@ -1,7 +1,26 @@
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE_GRID } from "@/components/ui/grid";
+import TiltedGridHero from "@/components/ui/tilted-grid-hero";
 
 const EMAIL = "madisoninmarketing@gmail.com";
+
+// Screenshots of live redesigns, interleaved so neighbouring tiles differ.
+const REDESIGN_SHOTS = [
+  { src: "/work/redesigns/gymrise-1.jpg", alt: "GYMRISE homepage" },
+  { src: "/work/redesigns/kalero-1.jpg", alt: "Kalero homepage" },
+  { src: "/work/redesigns/socialmulli-1.jpg", alt: "Social Mulli homepage" },
+  { src: "/work/redesigns/o2suites-1.jpg", alt: "O2 Suites homepage" },
+  { src: "/work/redesigns/gymrise-2.jpg", alt: "GYMRISE testimonials" },
+  { src: "/work/redesigns/kalero-2.jpg", alt: "Kalero filter finder" },
+  { src: "/work/redesigns/socialmulli-2.jpg", alt: "Social Mulli services" },
+  { src: "/work/redesigns/o2suites-2.jpg", alt: "O2 Suites practices" },
+  { src: "/work/redesigns/gymrise-3.jpg", alt: "GYMRISE pricing" },
+  { src: "/work/redesigns/kalero-3.jpg", alt: "Kalero shop" },
+  { src: "/work/redesigns/socialmulli-3.jpg", alt: "Social Mulli about" },
+  { src: "/work/redesigns/o2suites-3.jpg", alt: "O2 Suites partnership roadmap" },
+  { src: "/work/redesigns/kalero-4.jpg", alt: "Kalero filter lineup" },
+  { src: "/work/redesigns/o2suites-4.jpg", alt: "O2 Suites benefits" },
+];
 
 export default function Contact() {
   // Platforms that share a handle are grouped: each platform name in the
@@ -38,37 +57,36 @@ export default function Contact() {
             <div className="chrome-aura chrome-aura--petal -top-24 -right-24 w-[30rem] h-[30rem] opacity-60" />
             <div className="chrome-aura chrome-aura--icy -bottom-32 -left-24 w-[28rem] h-[28rem] opacity-50" />
 
-            <div className="relative p-7 sm:p-10 md:p-14 lg:p-16">
-              {/* ── Specialty ── */}
+            {/* ── Specialty: redesign reel ── */}
+            <TiltedGridHero
+              images={REDESIGN_SHOTS}
+              aspectRatio={16 / 10}
+              tileHeight={40}
+              axis={62}
+              curve={55}
+              speed={6}
+              fade={10}
+              className="h-[290px] sm:h-[400px] md:h-[500px] w-full"
+            >
+              <div className="relative z-10 pt-10 md:pt-14 px-6 text-center">
+                <p className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry mb-3">
+                  ✦ &nbsp; My Specialty
+                </p>
+                <h3
+                  className="font-display font-bold text-ink leading-[1.0] tracking-[-0.04em] pb-1"
+                  style={{ fontSize: "clamp(1.9rem, 3.4vw, 2.75rem)" }}
+                >
+                  Website <span className="text-berry">redesigns</span>
+                </h3>
+              </div>
+            </TiltedGridHero>
+
+            <div className="relative px-7 pb-7 pt-10 sm:px-10 sm:pb-10 md:px-14 md:pb-14 md:pt-12 lg:px-16 lg:pb-16 border-t border-ink/10">
               <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
                 <div className="lg:col-span-5">
-                  <p className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry mb-4">
-                    ✦ &nbsp; My Specialty
-                  </p>
-                  <h3
-                    className="font-display font-bold text-ink leading-[1.0] tracking-[-0.04em] mb-5 pb-1"
-                    style={{ fontSize: "clamp(1.9rem, 3.4vw, 2.75rem)" }}
-                  >
-                    Website <span className="text-berry">redesigns</span>
-                  </h3>
-                  <p className="font-sans text-sm md:text-base text-ink/70 leading-relaxed mb-7 max-w-md">
+                  <p className="font-sans text-base md:text-lg text-ink/75 leading-relaxed max-w-md">
                     Taking a site that feels dated or disconnected and rebuilding it so it looks like the brand, reads clearly, and gives visitors a reason to reach out.
                   </p>
-
-                  <p className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-ink/45 mb-2.5">
-                    Recent redesigns
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      { label: "GYMRISE", href: "/work/gymrise" },
-                      { label: "Social Mulli", href: "/work/social-mulli" },
-                      { label: "This Portfolio", href: "/" },
-                    ].map((p) => (
-                      <a key={p.href} href={p.href} className="tag-light hover:text-berry hover:border-berry transition-colors duration-300">
-                        {p.label} ↗
-                      </a>
-                    ))}
-                  </div>
                 </div>
 
                 <ol className="lg:col-span-7 border-t border-ink/10 self-start">

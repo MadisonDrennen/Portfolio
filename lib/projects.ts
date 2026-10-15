@@ -60,6 +60,8 @@ export interface Project {
   resultsCaption?: string;
   gallery?: GalleryRow[];
   pdfs?: PdfAsset[];
+  /** Live site shown in a browser window that scrolls a full-page capture. */
+  liveSite?: { url: string; scroll: string };
 }
 
 export const projects: Project[] = [
@@ -81,6 +83,7 @@ export const projects: Project[] = [
     caseStudyAvailable: true,
     heroImage: "/work/gymrise/hero.png",
     heroCompact: true,
+    liveSite: { url: "https://gymrise.com", scroll: "/work/gymrise/site-full.jpg" },
     challenge:
       "GYMRISE was scaling fast in the fitness industry and needed a brand presence that matched the ambition.\n\nThe website, marketing assets, and content needed to feel unified, built around a single visual system that could ship at the speed the program was growing.",
     approach:

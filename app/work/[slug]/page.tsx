@@ -3,6 +3,7 @@ import Link from "next/link";
 import { projects } from "@/lib/projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SiteScroll from "@/components/ui/SiteScroll";
 
 interface PageProps {
   params: { slug: string };
@@ -344,6 +345,29 @@ export default function CaseStudyPage({ params }: PageProps) {
               </div>
             </section>
           </>
+        )}
+
+        {/* ── Live site, scrolling through the full page ── */}
+        {project.liveSite && (
+          <section className="px-6 pb-24">
+            <div className="max-w-5xl mx-auto">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-mono text-[0.6rem] font-bold tracking-[0.3em] uppercase text-ink/65">
+                  The Live Site
+                </span>
+                <span className="flex-1 h-px bg-ink/10" />
+                <span className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-ink/30">
+                  Hover to pause
+                </span>
+              </div>
+              <SiteScroll
+                src={project.liveSite.scroll}
+                url={project.liveSite.url}
+                alt={`${project.title} website, full page`}
+                accent={project.accentColor}
+              />
+            </div>
+          </section>
         )}
 
         {/* ── Project Gallery (row-based, no staggering, no cropping) ── */}

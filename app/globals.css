@@ -550,3 +550,21 @@
 }
 
 input:focus, textarea:focus, select:focus { outline: none; }
+
+/* ─── Site scroll (case-study browser window) ───
+   The viewport is a size container, so 100cqh is the window's height and
+   the image travels its own height minus that: top of page to bottom. */
+.site-scroll { container-type: size; }
+@keyframes siteScroll {
+  0%, 6%   { transform: translateY(0); }
+  47%, 53% { transform: translateY(calc(-100% + 100cqh)); }
+  94%, 100% { transform: translateY(0); }
+}
+.site-scroll-img {
+  animation: siteScroll 48s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+.site-scroll:hover .site-scroll-img { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .site-scroll-img { animation: none; }
+}
