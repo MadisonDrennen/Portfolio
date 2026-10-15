@@ -397,7 +397,7 @@ export default function CaseStudyPage({ params }: PageProps) {
                         </div>
                       )}
 
-                      <div className={`grid gap-3 md:gap-4 ${colsClass(row.items.length)}`}>
+                      <div className={`grid gap-3 md:gap-4 ${colsClass(row.items.length)} ${row.narrow ? "md:max-w-[50%] md:mx-auto" : ""}`}>
                         {row.items.map((item, i) => {
                           const isTransparent = row.bg === "transparent";
                           return (

@@ -32,6 +32,8 @@ export type GalleryRow = {
   fit?: "cover" | "contain";
   /** Background color behind contain images. Defaults to a soft tint of the project accent. */
   bg?: string;
+  /** Show the row at half width, centred, so a short row keeps the tile size of its neighbours. */
+  narrow?: boolean;
   items: GalleryItem[];
 };
 
@@ -107,93 +109,71 @@ export const projects: Project[] = [
           { src: "/work/gymrise/site-03.jpg", alt: "GYMRISE website, university, FAQs & next-step CTA" },
         ],
       },
-      // Row 3, Reels & Motion
+      // Reels & Motion (mockup-approved exports). Identity is 4:5, so the
+      // row letterboxes on GYMRISE dark instead of cropping it.
       {
         label: "Reels & Motion",
         aspect: "9/16",
-        fit: "cover",
+        fit: "contain",
+        bg: "#040C0E",
         items: [
-          { src: "/work/gymrise/reel-brand.mp4", alt: "GYMRISE brand reel animation", type: "video" },
-          { src: "/work/gymrise/reel-identity.mp4", alt: "GYMRISE identity reel animation", type: "video" },
-          { src: "/work/gymrise/reel-system.mp4", alt: "GYMRISE system reel animation", type: "video" },
-          { src: "/work/gymrise/reel-proof.mp4", alt: "GYMRISE proof reel animation", type: "video" },
-          { src: "/work/gymrise/reel-september-numbers.mp4", alt: "GYMRISE September numbers reel", type: "video" },
-          { src: "/work/gymrise/reel-time.mp4", alt: "GYMRISE time reel animation", type: "video" },
+          { src: "/work/gymrise/reels/brand.mp4", alt: "GYMRISE brand reel animation", type: "video" },
+          { src: "/work/gymrise/reels/identity.mp4", alt: "GYMRISE identity reel animation", type: "video" },
+          { src: "/work/gymrise/reels/proof.mp4", alt: "GYMRISE proof reel animation", type: "video" },
+          { src: "/work/gymrise/reels/proof-v3.mp4", alt: "GYMRISE proof reel, testimonial cut", type: "video" },
+          { src: "/work/gymrise/reels/september-numbers.mp4", alt: "GYMRISE September numbers reel", type: "video" },
         ],
       },
-      // Row 4, Client Wins & Shoutouts (city/club name blurred, body copy + numbers visible)
+      // Social media designs. Mockup-approved exports: names and clubs are
+      // already placeholder text, numbers are real, so no redaction needed.
       {
-        label: "Client Wins & Shoutouts",
+        label: "Client Wins & Recognition",
         aspect: "4/5",
         fit: "cover",
         items: [
-          {
-            src: "/work/gymrise/post-client-wins-01.png",
-            alt: "Win of the Day post",
-            redact: [{ top: 42, height: 15, left: 5, width: 60 }],
-          },
-          {
-            src: "/work/gymrise/post-client-wins-02.png",
-            alt: "Win of the Day post",
-            redact: [{ top: 48, height: 15, left: 5, width: 65 }],
-          },
-          {
-            src: "/work/gymrise/post-client-wins-03.png",
-            alt: "Win of the Day post",
-            redact: [{ top: 42, height: 15, left: 5, width: 65 }],
-          },
-          {
-            src: "/work/gymrise/post-september-shoutout.png",
-            alt: "Lifetime milestone shoutout post",
-            // Face photo spans most of the top, name + location below the face.
-            redact: [{ top: 0, height: 72, left: 0, width: 100 }],
-          },
+          { src: "/work/gymrise/social/client-wins-1.jpg", alt: "Client win of the day post, dark" },
+          { src: "/work/gymrise/social/client-wins-2.jpg", alt: "Client win of the day post, light" },
+          { src: "/work/gymrise/social/recognition-1.jpg", alt: "Coach recognition post" },
+          { src: "/work/gymrise/social/recognition-2.jpg", alt: "Coach milestone recognition post" },
         ],
       },
-      // Row 5, Top Clubs & Leaderboard (club names column blurred, numbers readable)
       {
-        label: "Top Clubs & Leaderboard",
+        label: "Testimonials & Sales Confidence",
         aspect: "4/5",
         fit: "cover",
         items: [
-          {
-            src: "/work/gymrise/post-top-7.png",
-            alt: "Top 7 clubs of the month leaderboard",
-            // Vertical strip over the club name column.
-            // The rank number (1–7) and the dollar amount stay visible.
-            redact: [{ top: 34, height: 62, left: 15, width: 42 }],
-          },
-          {
-            src: "/work/gymrise/post-top-club.png",
-            alt: "Club of the month spotlight post",
-            redact: [
-              // Big club name "GIG HARBOR, WA"
-              { top: 25, height: 16, left: 4, width: 72 },
-              // Face photo + couple name row
-              { top: 41, height: 18, left: 4, width: 80 },
-            ],
-          },
-          {
-            src: "/work/gymrise/post-top-club-owners.png",
-            alt: "Top performing club owners of the month",
-            redact: [
-              // Row 1 — 4 face photos + names + locations (keep dollar amounts below)
-              { top: 23, height: 33, left: 0, width: 100 },
-              // Row 2 — 3 face photos + names + locations
-              { top: 62, height: 29, left: 22, width: 60 },
-            ],
-          },
+          { src: "/work/gymrise/social/testimonial-1.jpg", alt: "Client testimonial post" },
+          { src: "/work/gymrise/social/testimonial-2.jpg", alt: "Client testimonial post" },
+          { src: "/work/gymrise/social/sales-confidence-1.jpg", alt: "Sales confidence quote post" },
+          { src: "/work/gymrise/social/sales-confidence-2.jpg", alt: "Sales confidence tip post" },
         ],
       },
-      // Row 6, Weekly Recaps + Poll (no names on these — just session titles)
       {
-        label: "Weekly Recaps & Polls",
+        label: "Monthly Numbers & Program Pillars",
         aspect: "4/5",
         fit: "cover",
         items: [
-          { src: "/work/gymrise/post-week-1.jpg", alt: "Weekly live-sessions schedule post" },
-          { src: "/work/gymrise/post-sept-week-5.png", alt: "September weekly schedule post" },
-          { src: "/work/gymrise/post-poll.png", alt: "Poll engagement post" },
+          { src: "/work/gymrise/social/monthly-numbers-1.jpg", alt: "Monthly numbers headline post" },
+          { src: "/work/gymrise/social/monthly-numbers-2.jpg", alt: "Monthly top clubs leaderboard post" },
+          { src: "/work/gymrise/social/pillars-1.jpg", alt: "Content pillars list post" },
+          { src: "/work/gymrise/social/pillars-2.jpg", alt: "Program pillars checklist post" },
+        ],
+      },
+      {
+        aspect: "32/15",
+        fit: "cover",
+        items: [
+          { src: "/work/gymrise/social/leaderboard.jpg", alt: "Monthly leaderboard wall graphic" },
+        ],
+      },
+      {
+        label: "Seasonal Campaigns",
+        aspect: "4/5",
+        fit: "cover",
+        narrow: true,
+        items: [
+          { src: "/work/gymrise/social/halloween-1.jpg", alt: "Halloween campaign post" },
+          { src: "/work/gymrise/social/halloween-2.jpg", alt: "Halloween campaign post" },
         ],
       },
       // Row 7, Sales / marketing creative
