@@ -1,64 +1,65 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
+import MorphGallery from "@/components/ui/morph-gallery";
 
-const showcase = [
-  {
-    src: "/brand/gymrise-website.png",
-    project: "GYMRISE",
-    category: "Website · Brand · Growth",
-    year: "2026",
-  },
-  {
-    src: "/brand/social-mulli-website.png",
-    project: "Social Mulli",
-    category: "Website · Brand · Web Design",
-    year: "2026",
-  },
-  {
-    src: "/brand/social-mulli-brandkit.png",
-    project: "Social Mulli",
-    category: "Brand Kit · Print System",
-    year: "2026",
-  },
-  {
-    src: "/brand/gymrise-brandkit.png",
-    project: "GYMRISE",
-    category: "Brand Kit · Digital System",
-    year: "2026",
-  },
-  {
-    src: "/work/rekmed/01-product.jpg",
-    project: "RekMed",
-    category: "Product Photography · Brand",
-    year: "2025",
-  },
-  {
-    src: "/work/explorations/03-concept.png",
-    project: "Peachy HVAC",
-    category: "Website · Concept Design",
-    year: "Ongoing",
-  },
-  {
-    src: "/brand/email-signatures.png",
-    project: "Signature Bundle",
-    category: "Email Signature System",
-    year: "2026",
-  },
+type Slide = { src: string; project: string; category: string; year: string };
+
+// Landscape work for wide screens.
+const DESKTOP: Slide[] = [
+  { src: "/hero/d-gymrise.jpg", project: "GYMRISE", category: "Website · Brand · Growth", year: "2026" },
+  { src: "/hero/d-kalero.jpg", project: "Kalero", category: "Website · E-commerce", year: "2026" },
+  { src: "/hero/d-socialmulli.jpg", project: "Social Mulli", category: "Website · Brand · Web Design", year: "2026" },
+  { src: "/hero/d-o2suites.jpg", project: "O2 Suites", category: "Website · Brand", year: "2026" },
+  { src: "/hero/d-socialmulli-brandkit.jpg", project: "Social Mulli", category: "Brand Kit · Print System", year: "2026" },
+  { src: "/hero/d-gymrise-brandkit.jpg", project: "GYMRISE", category: "Brand Kit · Digital System", year: "2026" },
+  { src: "/hero/d-rekmed.jpg", project: "RekMed", category: "Product Photography · Brand", year: "2025" },
+  { src: "/hero/d-peachy.jpg", project: "Peachy HVAC", category: "Website · Concept Design", year: "Ongoing" },
+  { src: "/hero/d-signatures.jpg", project: "Signature Bundle", category: "Email Signature System", year: "2026" },
 ];
 
-const ROTATION_MS = 3800;
+// Phone-sized captures of the live sites, so a portrait screen is filled
+// with the real mobile design instead of a cropped sliver of a desktop one.
+const MOBILE: Slide[] = [
+  { src: "/hero/m-gymrise-1.jpg", project: "GYMRISE", category: "Website · Brand · Growth", year: "2026" },
+  { src: "/hero/m-socialmulli-1.jpg", project: "Social Mulli", category: "Website · Brand", year: "2026" },
+  { src: "/hero/m-kalero-1.jpg", project: "Kalero", category: "Website · E-commerce", year: "2026" },
+  { src: "/hero/m-o2suites-1.jpg", project: "O2 Suites", category: "Website · Brand", year: "2026" },
+  { src: "/hero/m-gymrise-2.jpg", project: "GYMRISE", category: "Website · Systems", year: "2026" },
+  { src: "/hero/m-socialmulli-2.jpg", project: "Social Mulli", category: "Website · Testimonials", year: "2026" },
+  { src: "/hero/m-o2suites-2.jpg", project: "O2 Suites", category: "Website · Patient Story", year: "2026" },
+];
+
+const ROTATION_MS = 4500;
 
 /**
- * Shared grid container — everything in the hero (top strip,
- * slideshow, bottom controls) sits on this one axis so their
- * left/right edges line up as a single composition.
+ * Shared grid container, so the caption's edges line up with the rest of
+ * the site.
  */
 const GRID = "mx-auto w-full max-w-[1280px] px-6 sm:px-8 md:px-12 lg:px-20";
 
+const reveal = (y: number) => ({
+  opacity: 0,
+  transform: `translateY(${y}px)`,
+  transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)",
+});
+
 export default function Hero() {
   const [activeIdx, setActiveIdx] = useState(0);
+  // Chosen after mount from the viewport, so each device only ever loads
+  // its own set of images.
+  const [slides, setSlides] = useState<Slide[] | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => {
+      setSlides(mq.matches ? MOBILE : DESKTOP);
+      setActiveIdx(0);
+    };
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-hero-reveal]");
@@ -70,196 +71,121 @@ export default function Hero() {
     });
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIdx((i) => (i + 1) % showcase.length);
-    }, ROTATION_MS);
-    return () => clearInterval(interval);
-  }, []);
-
-  const active = showcase[activeIdx];
+  const list = slides ?? DESKTOP;
+  const active = list[activeIdx % list.length];
+  const items = useMemo(
+    () => list.map((s) => ({ src: s.src, alt: `${s.project}, ${s.category}` })),
+    [list],
+  );
 
   return (
     <section
       id="hero"
       data-nav-theme="dark"
-      className="relative overflow-hidden hero-chrome-bg corner-frame flex flex-col justify-center h-[100svh] min-h-[680px] pt-24 pb-10 md:pt-28 md:pb-14"
+      className="relative overflow-hidden h-[100svh] min-h-[600px] bg-mahogany-deep"
     >
-      <span className="corner-bl" />
-      <span className="corner-br" />
+      {/* ── Full-bleed gallery ── */}
+      {slides && (
+        <MorphGallery
+          items={items}
+          index={activeIdx}
+          onIndexChange={setActiveIdx}
+          autoplay={ROTATION_MS}
+          duration={1600}
+          thumbnails={false}
+          arrows={slides === DESKTOP}
+          pauseOnHover={false}
+          height="100%"
+          className="!absolute inset-0 bg-mahogany-deep"
+        />
+      )}
 
-      {/* Chrome ribbon layer */}
-      <div className="hero-chrome-layer" aria-hidden="true" />
-
-      {/* Dark veil for text contrast over the chrome ribbon */}
+      {/* Mahogany veil: darker under the nav and behind the caption */}
       <div
-        className="absolute inset-0 pointer-events-none z-[1]"
+        className="absolute inset-0 pointer-events-none z-[6]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(26,7,20,0.5) 0%, rgba(26,7,20,0.2) 40%, rgba(26,7,20,0.55) 100%)",
+            "linear-gradient(180deg, rgba(26,7,20,0.75) 0%, rgba(26,7,20,0.2) 18%, rgba(26,7,20,0.08) 40%, rgba(26,7,20,0.7) 62%, rgba(26,7,20,0.96) 78%, rgb(26,7,20) 100%)",
         }}
       />
 
-      {/* ── TOP STRIP ── */}
-      <div className={`relative z-[3] ${GRID} mb-6 md:mb-8`}>
-        <div className="flex items-center justify-between gap-6">
-          <div
-            data-hero-reveal
-            style={{
-              opacity: 0,
-              transform: "translateY(14px)",
-              transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)",
-            }}
-            className="flex items-center gap-3 font-mono text-[0.65rem] md:text-[0.7rem] font-medium tracking-[0.22em] uppercase text-snow/85"
-          >
-            <span className="text-berry text-base leading-none">✦</span>
-            <span>Madison Drennen</span>
-            <span className="hidden md:inline text-snow/35">·</span>
-            <span className="hidden md:inline">Portfolio 2026</span>
-          </div>
-
-          <div
-            data-hero-reveal
-            style={{
-              opacity: 0,
-              transform: "translateY(14px)",
-              transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)",
-            }}
-            className="font-mono text-[0.6rem] md:text-[0.65rem] font-medium tracking-[0.22em] uppercase text-snow/65 tabular-nums"
-          >
-            Issue 04
-          </div>
-        </div>
-      </div>
-
-      {/* ── SLIDESHOW STAGE ── */}
-      <div className={`relative z-[3] ${GRID}`}>
-        <div
-          data-hero-reveal
-          className="relative w-full overflow-hidden rounded-[20px] md:rounded-[24px] ring-1 ring-mahogany-deep/15 bg-mahogany-deep/40 shadow-[0_40px_100px_-30px_rgba(37,2,9,0.4),0_20px_60px_-20px_rgba(186,0,109,0.3)]"
-          style={{
-            opacity: 0,
-            transform: "translateY(32px)",
-            transition: "all 1s cubic-bezier(0.16,1,0.3,1)",
-            aspectRatio: "16 / 9",
-          }}
-        >
-          {showcase.map((s, i) => (
-            <div
-              key={s.src}
-              className="absolute inset-0 transition-all ease-[cubic-bezier(0.16,1,0.3,1)]"
-              style={{
-                opacity: i === activeIdx ? 1 : 0,
-                transform: i === activeIdx ? "scale(1.025)" : "scale(1)",
-                transitionDuration:
-                  i === activeIdx
-                    ? `${ROTATION_MS + 600}ms, 1300ms`
-                    : "1300ms, 1300ms",
-                transitionProperty: "transform, opacity",
-                pointerEvents: i === activeIdx ? "auto" : "none",
-              }}
-              aria-hidden={i !== activeIdx}
-            >
-              <Image
-                src={s.src}
-                alt={`${s.project}, ${s.category}`}
-                fill
-                priority={i === 0}
-                className="object-cover"
-                sizes="(min-width: 1280px) 1200px, 100vw"
-              />
-            </div>
-          ))}
-
-          {/* Caption overlay inside the slideshow */}
-          <div className="absolute bottom-0 left-0 right-0 z-[5] px-6 sm:px-8 md:px-10 lg:px-12 py-6 md:py-8 bg-gradient-to-t from-mahogany-deep/95 via-mahogany-deep/55 to-transparent">
-            <div className="flex items-end justify-between gap-6">
-              <div className="min-w-0 flex-1">
-                <p
-                  className="font-mono text-[0.55rem] md:text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry mb-2.5 flex items-center gap-2.5 flex-wrap"
-                  key={`cat-${activeIdx}`}
-                  style={{ animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both" }}
-                >
-                  <span className="w-5 h-px bg-berry hidden sm:inline-block" />
-                  <span>{active.category}</span>
-                  <span className="text-snow/30 hidden sm:inline">·</span>
-                  <span className="text-snow/50 hidden sm:inline">{active.year}</span>
-                </p>
-                <h2
-                  key={`proj-${activeIdx}`}
-                  className="font-display font-bold text-snow leading-[0.95] tracking-[-0.04em]"
-                  style={{
-                    fontSize: "clamp(1.5rem, 3.2vw, 2.75rem)",
-                    animation: "fadeUp 0.85s cubic-bezier(0.16,1,0.3,1) 0.08s both",
-                  }}
-                >
-                  {active.project}
-                </h2>
-              </div>
-
-              <span className="font-mono text-[0.55rem] md:text-[0.6rem] font-medium tracking-[0.22em] uppercase text-snow/60 tabular-nums flex-shrink-0 pb-1.5">
-                <span className="text-snow font-semibold">
-                  {String(activeIdx + 1).padStart(2, "0")}
-                </span>
-                <span className="mx-1.5 text-snow/30">/</span>
-                <span>{String(showcase.length).padStart(2, "0")}</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── BOTTOM: INDICATOR + CTA ── */}
-      <div className={`relative z-[3] ${GRID} mt-5 md:mt-6`}>
-        <div
-          data-hero-reveal
-          style={{
-            opacity: 0,
-            transform: "translateY(14px)",
-            transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)",
-          }}
-          className="flex items-center justify-between gap-4"
-        >
-          <div className="flex items-center gap-2">
-            {showcase.map((s, i) => (
-              <button
-                key={s.src}
-                type="button"
-                aria-label={`Show ${s.project}`}
-                onClick={() => setActiveIdx(i)}
-                className="relative h-[3px] overflow-hidden rounded-full transition-all duration-500 cursor-pointer"
+      {/* ── BOTTOM: caption, indicator, CTA ── */}
+      <div className={`absolute z-[7] inset-x-0 bottom-0 ${GRID} pb-8 md:pb-12 pointer-events-none`}>
+        <div data-hero-reveal style={reveal(24)}>
+          <div className="flex items-end justify-between gap-6 mb-6 md:mb-8">
+            <div className="min-w-0 flex-1">
+              <p
+                className="font-mono text-[0.55rem] md:text-[0.65rem] font-medium tracking-[0.22em] uppercase text-petal mb-3 flex items-center gap-2.5 flex-wrap"
+                key={`cat-${activeIdx}`}
+                style={{ animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both" }}
+              >
+                <span className="w-5 h-px bg-berry hidden sm:inline-block" />
+                <span>{active.category}</span>
+                <span className="text-snow/30 hidden sm:inline">·</span>
+                <span className="text-snow/55 hidden sm:inline">{active.year}</span>
+              </p>
+              <h2
+                key={`proj-${activeIdx}`}
+                className="font-display font-bold text-snow leading-[0.92] tracking-[-0.045em] pb-1"
                 style={{
-                  width: i === activeIdx ? 44 : 14,
-                  background: "rgba(255,243,242,0.2)",
+                  fontSize: "clamp(2.5rem, 7vw, 6rem)",
+                  animation: "fadeUp 0.85s cubic-bezier(0.16,1,0.3,1) 0.08s both",
                 }}
               >
-                <span
-                  className="absolute inset-y-0 left-0 bg-berry rounded-full"
-                  style={{
-                    width: i === activeIdx ? "100%" : 0,
-                    transition:
-                      i === activeIdx
-                        ? `width ${ROTATION_MS}ms linear`
-                        : "width 0.3s",
-                  }}
-                />
-              </button>
-            ))}
+                {active.project}
+              </h2>
+            </div>
+
+            <span className="font-mono text-[0.55rem] md:text-[0.65rem] font-medium tracking-[0.22em] uppercase text-snow/60 tabular-nums flex-shrink-0 pb-2">
+              <span className="text-snow font-semibold">
+                {String((activeIdx % list.length) + 1).padStart(2, "0")}
+              </span>
+              <span className="mx-1.5 text-snow/30">/</span>
+              <span>{String(list.length).padStart(2, "0")}</span>
+            </span>
           </div>
 
-          <a
-            href="#work"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="group inline-flex items-center gap-3 font-mono text-[0.6rem] md:text-[0.65rem] font-medium tracking-[0.22em] uppercase text-snow/80 hover:text-petal transition-colors duration-300"
-          >
-            <span>View All Work</span>
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-snow/30 group-hover:border-berry group-hover:bg-berry text-snow group-hover:text-snow transition-all duration-300">
-              →
-            </span>
-          </a>
+          <div className="flex items-center justify-between gap-4 pt-5 border-t border-snow/15">
+            <div className="flex items-center gap-2 pointer-events-auto">
+              {list.map((s, i) => (
+                <button
+                  key={s.src}
+                  type="button"
+                  aria-label={`Show ${s.project}`}
+                  onClick={() => setActiveIdx(i)}
+                  className="relative h-[3px] overflow-hidden rounded-full transition-all duration-500 cursor-pointer"
+                  style={{
+                    width: i === activeIdx ? 44 : 14,
+                    background: "rgba(255,243,242,0.25)",
+                  }}
+                >
+                  <span
+                    key={i === activeIdx ? `on-${activeIdx}` : "off"}
+                    className="absolute inset-y-0 left-0 bg-berry rounded-full"
+                    style={{
+                      width: i === activeIdx ? "100%" : 0,
+                      animation:
+                        i === activeIdx ? `heroProgress ${ROTATION_MS}ms linear both` : undefined,
+                    }}
+                  />
+                </button>
+              ))}
+            </div>
+
+            <a
+              href="#work"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="pointer-events-auto group inline-flex items-center gap-3 font-mono text-[0.6rem] md:text-[0.65rem] font-medium tracking-[0.22em] uppercase text-snow/85 hover:text-petal transition-colors duration-300"
+            >
+              <span>View All Work</span>
+              <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-snow/30 group-hover:border-berry group-hover:bg-berry text-snow group-hover:text-snow transition-all duration-300">
+                →
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

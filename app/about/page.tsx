@@ -5,6 +5,23 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionLabel from "@/components/ui/SectionLabel";
+import LoopingWords from "@/components/ui/looping-words";
+
+const SKILLS = [
+  "Website Design",
+  "Web Development",
+  "Brand Systems",
+  "Social Media",
+  "Content Creation",
+  "Paid Ads",
+  "Email Marketing",
+  "Copywriting",
+  "Graphic Design",
+  "Video Editing",
+  "Product Photography",
+  "Marketing Strategy",
+  "AI Workflows",
+];
 
 type Chapter = {
   id: string;
@@ -118,6 +135,18 @@ export default function AboutPage() {
               campaign creative, and the content that carries them. This is
               where I keep track of what I&apos;m making and the thinking behind it.
             </p>
+
+            {/* What I do, looping through every skill */}
+            <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
+              <span className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry flex-shrink-0">
+                ✦ &nbsp; What I Do
+              </span>
+              <LoopingWords
+                words={SKILLS}
+                className="font-display font-bold uppercase text-ink tracking-[-0.03em] text-[clamp(1.4rem,6.4vw,2.25rem)] md:text-[clamp(2.5rem,5vw,4rem)] -ml-[0.5em] md:ml-0 w-full md:w-auto md:flex-1"
+                cornerClassName="border-berry"
+              />
+            </div>
           </div>
         </section>
 

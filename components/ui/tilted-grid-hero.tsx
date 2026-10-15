@@ -121,6 +121,10 @@ export type TiltedGridHeroProps = {
   curve?: number;
   /** Width of the fade at each end, as a percentage of the hero's width. @default 12 */
   fade?: number;
+  /** Extra classes for every strip of a tile (e.g. a rim via border-y). */
+  sliceClassName?: string;
+  /** Extra classes for a tile's first and last strips (e.g. border-l / border-r). */
+  edgeClassNames?: [string, string];
   /** Content rendered above the band. */
   children?: React.ReactNode;
   className?: string;
@@ -135,6 +139,8 @@ export function TiltedGridHero({
   axis = 56,
   curve = 80,
   fade = 12,
+  sliceClassName,
+  edgeClassNames,
   children,
   className,
   ...props
@@ -271,8 +277,9 @@ export function TiltedGridHero({
                   key={k}
                   className={cn(
                     "absolute top-0 overflow-hidden bg-petal/25",
-                    k === 0 && "rounded-l-lg",
-                    k === SLICES - 1 && "rounded-r-lg",
+                    sliceClassName,
+                    k === 0 && cn("rounded-l-lg", edgeClassNames?.[0]),
+                    k === SLICES - 1 && cn("rounded-r-lg", edgeClassNames?.[1]),
                   )}
                   style={{
                     // Every strip starts at the tile's centre and is turned
