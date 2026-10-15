@@ -14,9 +14,9 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <MarqueeStrip />
         <Redesigns />
         <FeaturedWork />
+        <MarqueeStrip />
         <Contact />
       </main>
       <Footer />
