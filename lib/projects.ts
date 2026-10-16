@@ -111,13 +111,6 @@ export const projects: Project[] = [
       "GYMRISE was scaling fast in the fitness industry and needed a brand presence that matched the ambition.\n\nThe website, marketing assets, and content needed to feel unified, built around a single visual system that could ship at the speed the program was growing.",
     approach:
       "I designed and built the entire GYMRISE website myself, every page, every interaction, every section, then extended the same visual system across the brand kit, social campaigns, and sales creative.\n\nEverything lives together: the same typography, the same energy, the same point of view. Owners, members, and prospects all see one brand, no matter where they meet it.",
-    results: [
-      { value: "$231M+", label: "In Client PT Sales" },
-      { value: "360+", label: "Active Operators" },
-      { value: "40+", label: "Markets Covered" },
-      { value: "1 System", label: "End-to-End Brand" },
-    ],
-    resultsCaption: "Focus: A single brand engine powering web, social, and sales.",
     gallery: [
       // Row 1, THE BUILD: the GYMRISE website pages, full-width sequence
       {

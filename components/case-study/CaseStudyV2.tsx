@@ -135,7 +135,9 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
       )}
 
       {/* ── 3. The story ── */}
-      <section className="bg-snow pb-24 md:pb-32">
+      <section
+        className={`relative bg-snow pb-24 md:pb-32 ${project.results?.length ? "" : "pt-36 md:pt-56"}`}
+      >
         <div className={`${SITE_GRID} grid lg:grid-cols-12 gap-12 lg:gap-16`}>
           <RevealOnScroll className="lg:col-span-4">
             <p className="font-mono text-[0.6rem] font-medium tracking-[0.25em] uppercase text-berry mb-6">My Role</p>
