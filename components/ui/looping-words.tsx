@@ -19,10 +19,12 @@ export function LoopingWords({
   words,
   className,
   cornerClassName = "border-berry",
+  align = "left",
 }: {
   words: string[];
   className?: string;
   cornerClassName?: string;
+  align?: "left" | "center";
 }) {
   const listRef = useRef<HTMLUListElement>(null);
   const selectorRef = useRef<HTMLDivElement>(null);
@@ -87,31 +89,36 @@ export function LoopingWords({
 
   return (
     <div className={cn("relative h-[3.6em] leading-none select-none", className)}>
-      <div aria-hidden className="absolute inset-0 overflow-hidden">
+      {/* The neighbouring words fade out above and below via a mask, so it
+          works over any background, including animated ones. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 overflow-hidden"
+        style={{
+          maskImage: "linear-gradient(180deg, transparent 2%, #000 38%, #000 62%, transparent 98%)",
+          WebkitMaskImage: "linear-gradient(180deg, transparent 2%, #000 38%, #000 62%, transparent 98%)",
+        }}
+      >
         <ul ref={listRef} className="relative m-0 p-0 list-none">
           {words.map((word, i) => (
-            <li key={`${word}-${i}`} className="h-[1.2em] flex items-center pl-[0.5em]">
+            <li
+              key={`${word}-${i}`}
+              className={cn("h-[1.2em] flex items-center", align === "center" ? "justify-center" : "pl-[0.5em]")}
+            >
               <span className="whitespace-nowrap">{word}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Fade the neighbouring words into the page above and below */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, var(--loop-fade, #FFF3F2) 2%, transparent 38%, transparent 62%, var(--loop-fade, #FFF3F2) 98%)",
-        }}
-      />
-
       {/* Selector: four bracket corners around the middle word */}
       <div
         ref={selectorRef}
         aria-hidden
-        className="absolute left-0 top-[1.2em] h-[1.2em] pointer-events-none"
+        className={cn(
+          "absolute top-[1.2em] h-[1.2em] pointer-events-none",
+          align === "center" ? "left-1/2 -translate-x-1/2" : "left-0",
+        )}
         style={{ width: "4em" }}
       >
         <span className={cn(corner, "top-0 left-0 border-r-0 border-b-0")} />

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionLabel from "@/components/ui/SectionLabel";
 import LoopingWords from "@/components/ui/looping-words";
+import GlassFold from "@/components/ui/glass-fold";
 
 const SKILLS = [
   "Website Design",
@@ -95,63 +96,93 @@ const supportSwatches = [
 
 export default function AboutPage() {
   const [openId, setOpenId] = useState<string | null>("my-story");
+  const heroContent = useRef<HTMLDivElement>(null);
+  const scrollCue = useRef<HTMLDivElement>(null);
+
+  // As the About Me section slides up over the pinned hero, the skills
+  // recede: fade, shrink, drift up and soften.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const p = Math.min(Math.max(window.scrollY / window.innerHeight, 0), 1);
+      const el = heroContent.current;
+      if (el) {
+        el.style.opacity = String(1 - p * 1.15);
+        el.style.transform = `translateY(${-p * 80}px) scale(${1 - p * 0.14})`;
+        el.style.filter = `blur(${p * 6}px)`;
+      }
+      if (scrollCue.current) scrollCue.current.style.opacity = String(1 - p * 3);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <>
       <Navbar />
       <main data-nav-theme="light" className="bg-ivory text-ink min-h-screen">
-        {/* ── HERO ── */}
-        <section className="relative pt-36 md:pt-44 pb-16 md:pb-24 px-6 overflow-hidden">
-          {/* Soft chrome aura washes */}
-          <div className="chrome-aura chrome-aura--petal -top-20 -right-32 w-[36rem] h-[36rem] opacity-50" />
-          <div className="chrome-aura chrome-aura--icy top-20 -left-24 w-[28rem] h-[28rem] opacity-45" />
+        {/* ── HERO: glass folds + looping skills, pinned while the
+             About Me section slides up over it ── */}
+        <section
+          data-nav-theme="dark"
+          className="sticky top-0 z-0 h-[100svh] min-h-[560px] overflow-hidden bg-mahogany-deep text-snow"
+        >
+          <GlassFold
+            color1="#89235B"
+            color2="#250209"
+            color3="#FFCAE4"
+            speed={0.45}
+            scale={1}
+            noise={0.1}
+            className="absolute inset-0"
+          />
+          {/* Veil so the words always read over the brightest folds */}
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(60% 45% at 50% 50%, rgba(26,7,20,0.55) 0%, rgba(26,7,20,0.15) 70%, transparent 100%)",
+            }}
+          />
 
-          <div className="relative max-w-6xl mx-auto">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 mb-10">
-              <Link
-                href="/"
-                className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-ink/40 hover:text-ink transition-colors link-underline"
-              >
-                Home
-              </Link>
-              <span className="text-ink/25 text-sm">/</span>
-              <span className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry">
-                About
-              </span>
-            </div>
+          <div
+            ref={heroContent}
+            className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 will-change-transform"
+          >
+            <span className="font-mono text-[0.6rem] md:text-[0.65rem] font-medium tracking-[0.22em] uppercase text-petal mb-5 md:mb-7">
+              ✦ &nbsp; What I Do
+            </span>
+            <LoopingWords
+              words={SKILLS}
+              align="center"
+              className="w-full font-display font-bold uppercase text-snow tracking-[-0.03em] text-[clamp(1.4rem,6.2vw,5.5rem)]"
+              cornerClassName="border-petal"
+            />
+          </div>
 
-            <SectionLabel label="About Me" />
-
-            <h1
-              className="font-display font-bold text-ink leading-[0.95] tracking-[-0.05em] mt-6 mb-8 pb-2"
-              style={{ fontSize: "clamp(2.75rem, 8vw, 7rem)" }}
-            >
-              Hi, I&apos;m <span className="text-berry">Madison</span>.
-            </h1>
-
-            <p className="font-sans text-lg md:text-xl font-normal text-ink/75 leading-relaxed max-w-2xl">
-              I work in digital marketing. I make brand systems, websites,
-              campaign creative, and the content that carries them. This is
-              where I keep track of what I&apos;m making and the thinking behind it.
-            </p>
-
-            {/* What I do, looping through every skill */}
-            <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
-              <span className="font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase text-berry flex-shrink-0">
-                ✦ &nbsp; What I Do
-              </span>
-              <LoopingWords
-                words={SKILLS}
-                className="font-display font-bold uppercase text-ink tracking-[-0.03em] text-[clamp(1.4rem,6.4vw,2.25rem)] md:text-[clamp(2.5rem,5vw,4rem)] -ml-[0.5em] md:ml-0 w-full md:w-auto md:flex-1"
-                cornerClassName="border-berry"
-              />
-            </div>
+          {/* Scroll cue */}
+          <div
+            ref={scrollCue}
+            aria-hidden
+            className="absolute bottom-8 inset-x-0 z-10 flex flex-col items-center gap-3 font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-snow/60"
+          >
+            <span>Scroll</span>
+            <span className="block w-px h-10 bg-gradient-to-b from-snow/60 to-transparent animate-pulse" />
           </div>
         </section>
 
         {/* ── HEADSHOT + CHAPTERS ── */}
-        <section className="relative px-6 pb-20 md:pb-28 overflow-hidden">
+        <section className="relative z-10 px-6 pt-20 md:pt-28 pb-20 md:pb-28 overflow-hidden bg-ivory rounded-t-[32px] md:rounded-t-[48px] shadow-[0_-40px_80px_-30px_rgba(37,2,9,0.55)]">
           {/* Chrome sculpture backdrop */}
           <div
             className="absolute inset-0 pointer-events-none opacity-70"
@@ -255,7 +286,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── CTA, Let's connect ── */}
-        <section className="relative px-6 py-20 md:py-28 bg-ivory overflow-hidden border-t border-ink/8">
+        <section className="relative z-10 px-6 py-20 md:py-28 bg-ivory overflow-hidden border-t border-ink/8">
           <div className="chrome-aura chrome-aura--berry -top-20 left-1/2 -translate-x-1/2 w-[50%] h-[18rem] opacity-50" />
 
           <div className="relative max-w-3xl mx-auto text-center">
