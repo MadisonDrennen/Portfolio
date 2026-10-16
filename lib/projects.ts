@@ -79,6 +79,8 @@ export interface Project {
     lightBg?: string;
     /** Colours for a gradient-filled title. */
     titleGradient?: string[];
+    /** Solid colour for the title. */
+    titleColor?: string;
   };
   /** Public URL of the live site, shown in the quick facts. */
   liveUrl?: string;
@@ -429,7 +431,7 @@ export const projects: Project[] = [
       hues: ["#C9A8F0", "#FFCAE4"],
       tone: "light",
       lightBg: "#F7F8FC",
-      titleGradient: ["#8CB6DF", "#B79CE8", "#E58BC2", "#BA006D"],
+      titleColor: "#BA006D",
     },
     services: ["Website Design", "Campaign Concepts", "Email Design", "Brand Studies"],
     chapters: [

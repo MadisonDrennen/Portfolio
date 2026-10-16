@@ -128,6 +128,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
                 className={`relative z-[2] font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2 ${gradient ? "title-gradient" : ""}`}
                 style={{
                   fontSize: titleSize,
+                  color: project.brand?.titleColor,
                   ...(gradient && {
                     backgroundImage: `linear-gradient(90deg, ${[...gradient, gradient[0]].join(", ")})`,
                     WebkitBackgroundClip: "text",
