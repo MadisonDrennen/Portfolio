@@ -423,6 +423,21 @@ export const projects: Project[] = [
     ],
     tags: ["Mockups", "Concept Design", "Visual Experiments"],
     accentColor: "#8CB6DF",
+    brand: {
+      dark: "#1A0714",
+      accent: "#8CB6DF",
+      hues: ["#C9A8F0", "#FFCAE4"],
+      tone: "light",
+      lightBg: "#F7F8FC",
+      titleGradient: ["#8CB6DF", "#B79CE8", "#E58BC2", "#BA006D"],
+    },
+    services: ["Website Design", "Campaign Concepts", "Email Design", "Brand Studies"],
+    chapters: [
+      { id: "web", title: "Website Builds", caption: "Kalero and O2 Suites, designed and built end to end.", tone: "light" },
+      { id: "campaign", title: "Campaign Concepts", caption: "Campaigns I'd ship if the brief existed.", tone: "dark" },
+      { id: "email", title: "Email Design Studies", caption: "Email redesigns for brands I admire: Glossier, Quizlet and Notion.", tone: "light" },
+      { id: "concept", title: "Concept Studies", caption: "Website concepts and layout experiments.", tone: "dark" },
+    ],
     year: "Ongoing",
     caseStudyAvailable: true,
     heroImage: "/work/explorations/cover.jpg",
@@ -433,6 +448,26 @@ export const projects: Project[] = [
       "I treat exploration as practice. Anything that catches my eye, a phrase, a layout, a typographic moment, gets a mockup. Some become campaigns. Some stay studies. All of them sharpen the work I ship at the companies I work for.",
     gallery: [
       {
+        chapter: "web",
+        label: "O2 Suites",
+        aspect: "16/9",
+        fit: "cover",
+        items: [
+          { src: "/hero/m2-o2suites-site.jpg", alt: "O2 Suites website across desktop, laptop and tablet" },
+        ],
+      },
+      {
+        chapter: "web",
+        label: "Kalero & O2 Suites",
+        aspect: "16/9",
+        fit: "cover",
+        items: [
+          { src: "/hero/m2-kalero-filters.jpg", alt: "Kalero air filters website, product pages" },
+          { src: "/hero/m2-o2suites-office.jpg", alt: "O2 Suites website on a desktop in a wellness office" },
+        ],
+      },
+      {
+        chapter: "campaign",
         label: "Campaign Concept",
         aspect: "16/9",
         fit: "cover",
@@ -441,6 +476,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "email",
         label: "Email Marketing Mockups, Brand Studies",
         aspect: "3/5",
         fit: "cover",
@@ -451,8 +487,9 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "concept",
         label: "Concept Studies",
-        aspect: "1/1",
+        aspect: "4/3",
         fit: "cover",
         items: [
           { src: "/work/explorations/03-concept.png", alt: "Concept exploration" },
