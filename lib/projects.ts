@@ -287,21 +287,11 @@ export const projects: Project[] = [
         ],
       },
       {
-        label: "Google Business Profile & Meta Ads",
+        label: "Meta Ads",
         aspect: "4/5",
         fit: "contain",
         bg: "transparent",
         items: [
-          {
-            src: "/work/social-mulli/post-gbp.png",
-            alt: "Google Business Profile testimonial card",
-            redact: [
-              // Quote block (mentions client name)
-              { top: 25, height: 48, left: 10, width: 90 },
-              // Attribution strip (avatar + name + company)
-              { top: 76, height: 20, left: 10, width: 60 },
-            ],
-          },
           { src: "/work/social-mulli/meta-ad-busy-mom.png", alt: "Anytime Fitness Meta ad, Busy Mom 40+ program" },
           { src: "/work/social-mulli/meta-ad-stay-strong.png", alt: "Anytime Fitness Meta ad, Stay Strong, Stay Steady (Ageless 65+)" },
           { src: "/work/social-mulli/meta-ad-franklin-moms.png", alt: "Anytime Fitness Meta ad, Franklin Moms Reset campaign" },
