@@ -24,7 +24,7 @@ export type Palette = { ink: RGB; page: RGB; blobs: Blob[] };
 
 const MODES: Mode[] = ["smoke", "vortex", "sand", "burst", "sweep", "absorb"];
 // Long hold so the name is readable most of the cycle.
-const TIMING = { hold: 6500, field: 900, travel: 2800 };
+const TIMING = { hold: 5000, field: 900, travel: 2800 };
 const MAX_CELLS = 6000;
 
 function createRng(seed: number): () => number {
@@ -200,7 +200,7 @@ function createEngine(cv: HTMLCanvasElement, initial: Typo, pal: Palette, onRead
     }
     const r = createRng(7);
     parts = pts.map((p) => {
-      const u = r(), size = u < 0.62 ? 1 + r() * 0.9 : u < 0.9 ? 2 + r() * 1.6 : 3.6 + r() * 3.4;
+      const u = r(), size = u < 0.62 ? 1.5 + r() * 1.1 : u < 0.9 ? 2.6 + r() * 1.8 : 4.2 + r() * 3.6;
       return {
         rx: p[0], ry: p[1], rw: p[2], rh: p[3], hx: p[4], hy: p[5], nx: (p[4] - minX) / Math.max(1, maxX - minX),
         ny: (p[5] - textTop) / Math.max(1, textH), r1: r(), r2: r(), r3: r(), size, fx: 0, fy: 0, fc: [0, 0, 0] as RGB, lt: 0, bend: 0, pa: 0,
@@ -238,7 +238,7 @@ function createEngine(cv: HTMLCanvasElement, initial: Typo, pal: Palette, onRead
       let alpha = 0.1 + 0.9 * (1 - smooth((e - 0.45) / 0.55));
       alpha *= out ? 1 - smooth((lt - 0.85) / 0.15) : smooth(lt / 0.15) * (1 - p.pa);
       if (alpha <= 0.004) continue;
-      c.globalAlpha = Math.min(1, alpha); c.fillStyle = rgbStr(pal.ink, p.fc, smooth(e / 0.6));
+      c.globalAlpha = Math.min(1, alpha); c.fillStyle = rgbStr(pal.ink, p.fc, smooth(e / 0.6) * 0.5);
       c.beginPath(); c.arc(q[0], q[1], (p.size * mix(1, 1.7, smooth(e))) / 2, 0, 6.2832); c.fill();
     }
     c.globalAlpha = 1;
@@ -264,10 +264,9 @@ function createEngine(cv: HTMLCanvasElement, initial: Typo, pal: Palette, onRead
   }
 
   build();
-  // Start crisp, so the headline reads immediately, then begin cycling.
-  drawRealText();
+  // Open with the dust gathering into the headline, so the effect is seen on arrival.
   onReady();
-  enter("text");
+  enter("gathering");
   return {
     setActive(on) {
       if (on === active || destroyed) return;
