@@ -46,7 +46,7 @@ export default function CaseStudyPage({ params }: PageProps) {
       <>
         <Navbar />
         <main className="bg-snow min-h-screen">
-          <CaseStudyV2 project={project} next={nextProject} />
+          <CaseStudyV2 project={project} next={currentIndex === projects.length - 1 ? null : nextProject} />
         </main>
         <Footer />
       </>

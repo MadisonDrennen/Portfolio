@@ -4,6 +4,7 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE_GRID } from "@/components/ui/grid";
 import StatCounter from "./StatCounter";
 import GalleryRowView from "./GalleryRowView";
+import RedesignCTA from "./RedesignCTA";
 import { ParticleTitle, type Palette } from "@/components/ui/particle-title";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -22,7 +23,7 @@ const GRAIN =
  * numbered chapters that alternate light and dark, and a large next-project
  * card to finish.
  */
-export default function CaseStudyV2({ project, next }: { project: Project; next: Project }) {
+export default function CaseStudyV2({ project, next }: { project: Project; next: Project | null }) {
   const dark = project.brand?.dark ?? "#250209";
   const accent = project.brand?.accent ?? project.accentColor;
   const host = project.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
@@ -322,6 +323,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
       {/* ── 5. Next project ── */}
       <section className="bg-snow py-16 md:py-24">
         <div className={SITE_GRID}>
+          {next ? (
           <Link
             href={`/work/${next.slug}`}
             className="group relative block overflow-hidden rounded-[22px] md:rounded-[30px] text-snow"
@@ -357,6 +359,9 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
               )}
             </div>
           </Link>
+          ) : (
+            <RedesignCTA />
+          )}
           <div className="mt-6">
             <Link href="/#work" className="font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase text-ink/45 hover:text-ink transition-colors">
               ← All Work

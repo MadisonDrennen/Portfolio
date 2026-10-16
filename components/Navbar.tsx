@@ -74,11 +74,11 @@ export default function Navbar() {
   // light glass over light sections. A touch denser on scroll.
   const headerBg = isDark
     ? scrolled
-      ? "bg-mahogany-deep/80 backdrop-blur-xl border-b border-snow/10 py-2.5"
-      : "bg-mahogany-deep/55 backdrop-blur-xl border-b border-snow/5 py-3"
+      ? "bg-mahogany-deep/35 backdrop-blur-2xl backdrop-saturate-150 border-b border-snow/10 py-2.5 shadow-[inset_0_1px_0_rgba(255,243,242,0.08),0_8px_32px_-12px_rgba(0,0,0,0.45)]"
+      : "bg-mahogany-deep/20 backdrop-blur-xl backdrop-saturate-150 border-b border-snow/[0.06] py-3 shadow-[inset_0_1px_0_rgba(255,243,242,0.06)]"
     : scrolled
-    ? "bg-ivory/85 backdrop-blur-xl border-b border-ink/8 py-2.5 shadow-[0_4px_30px_rgba(37,2,9,0.05)]"
-    : "bg-ivory/60 backdrop-blur-xl border-b border-ink/5 py-3";
+    ? "bg-white/30 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/50 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_8px_32px_-12px_rgba(37,2,9,0.12)]"
+    : "bg-white/20 backdrop-blur-xl backdrop-saturate-150 border-b border-white/40 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]";
 
   const linkColor = isDark
     ? "text-snow/75 hover:text-snow"
