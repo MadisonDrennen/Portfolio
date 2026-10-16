@@ -239,7 +239,7 @@ export const projects: Project[] = [
       { id: "website", title: "The Website", caption: "Designed and built from scratch. A site that converts on first read.", tone: "light" },
       { id: "reels", title: "Reels & Motion", caption: "Motion pieces that put the REPS point of view into every feed.", tone: "dark" },
       { id: "social", title: "Social Content", caption: "Photo posts, post graphics, campaigns and Meta ads, all speaking one voice.", tone: "light" },
-      { id: "email", title: "Email Marketing", caption: "Campaign emails for gym owners: offers, results and new programs. Hover to read the full email.", tone: "light" },
+      { id: "email", title: "Email Marketing", caption: "Campaign emails for gym owners: office hours, offers and new programs.", tone: "light" },
       { id: "mockups", title: "In the Wild", caption: "The finished site across every screen it lives on.", tone: "dark" },
     ],
     year: "2026",
@@ -327,12 +327,13 @@ export const projects: Project[] = [
       },
       {
         chapter: "email",
-        aspect: "3/5",
+        aspect: "2/3",
         fit: "cover",
-        scrollOnHover: true,
         items: [
-          { src: "/work/social-mulli/emails/marketing-minimum.jpg", alt: "Email: New marketing spend minimum? We've got you" },
-          { src: "/work/social-mulli/emails/women-50-longevity.jpg", alt: "Email: Women 50+ longevity ad campaign walkthrough" },
+          { src: "/work/social-mulli/emails/pin-office-hours.jpg", alt: "Email: Live office hours, Stuck on something? Pop in" },
+          { src: "/work/social-mulli/emails/pin-marketing-minimum.jpg", alt: "Email: New marketing spend minimum? We've got you" },
+          { src: "/work/social-mulli/emails/pin-women-50.jpg", alt: "Email: Women 50+ longevity campaign walkthrough" },
+          { src: "/work/social-mulli/emails/pin-longevity-project.jpg", alt: "Email: Fill your training with the right people, The Longevity Project" },
         ],
       },
       // Website mockups, after the social work
@@ -448,7 +449,7 @@ export const projects: Project[] = [
     },
     services: ["Website Design", "Campaign Concepts", "Email Design", "Brand Studies"],
     chapters: [
-      { id: "web", title: "Website Builds", caption: "Kalero and O2 Suites, designed and built end to end.", tone: "light" },
+      { id: "web", title: "Website Builds", caption: "Kalero, O2 Suites and Healing Solutions, designed and built end to end.", tone: "light" },
       { id: "campaign", title: "Campaign Concepts", caption: "Campaigns I'd ship if the brief existed.", tone: "dark" },
       { id: "email", title: "Email Design Studies", caption: "Email redesigns for brands I admire: Glossier, Quizlet and Notion.", tone: "light" },
       { id: "concept", title: "Concept Studies", caption: "Website concepts and layout experiments.", tone: "dark" },
@@ -483,12 +484,12 @@ export const projects: Project[] = [
       },
       {
         chapter: "web",
-        label: "Kalero, Full Site",
+        label: "Full Site Layouts",
         aspect: "2/3",
         fit: "cover",
-        narrow: true,
         items: [
           { src: "/work/explorations/kalero-full-site.jpg", alt: "Kalero website, full homepage layout" },
+          { src: "/work/explorations/healing-solutions-before-after.jpg", alt: "Healing Solutions website, before and after redesign" },
         ],
       },
       {
@@ -502,13 +503,12 @@ export const projects: Project[] = [
       },
       {
         chapter: "email",
-        label: "Email Marketing Mockups, Brand Studies",
-        aspect: "3/5",
+        aspect: "2/3",
         fit: "cover",
         items: [
-          { src: "/work/explorations/email-01-glossier.jpg", alt: "Glossier, email design study" },
-          { src: "/work/explorations/email-02-quizlet.jpg", alt: "Quizlet, email design study" },
-          { src: "/work/explorations/email-03-notion.jpg", alt: "Notion, email design study" },
+          { src: "/work/explorations/pin-email-glossier.jpg", alt: "Glossier, email design study" },
+          { src: "/work/explorations/pin-email-quizlet.jpg", alt: "Quizlet, email design study" },
+          { src: "/work/explorations/pin-email-notion.jpg", alt: "Notion, email design study" },
         ],
       },
       {
