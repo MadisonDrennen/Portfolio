@@ -77,6 +77,8 @@ export interface Project {
   /** When set, the case study renders in the chapter layout, grouping
    *  gallery rows by their `chapter` id in this order. */
   chapters?: { id: string; title: string; caption: string; tone: "light" | "dark" }[];
+  /** Extra animated visual in the chapter layout's opening. */
+  heroVisual?: "ad-dashboard";
 }
 
 export const projects: Project[] = [
@@ -216,6 +218,7 @@ export const projects: Project[] = [
     tags: ["Web Design & Build", "Brand Identity", "Meta Ads", "Marketing Systems"],
     accentColor: "#3B6EFF",
     brand: { dark: "#05082E", accent: "#3B6EFF" },
+    heroVisual: "ad-dashboard",
     liveUrl: "https://socialmulli.com",
     services: ["Website Design & Build", "Brand Identity", "Social Content", "Reels & Motion", "Meta Ads"],
     chapters: [
@@ -223,7 +226,6 @@ export const projects: Project[] = [
       { id: "reels", title: "Reels & Motion", caption: "Motion pieces that put the REPS point of view into every feed.", tone: "dark" },
       { id: "social", title: "Social Content", caption: "Photo posts, post graphics, campaigns and Meta ads, all speaking one voice.", tone: "light" },
       { id: "mockups", title: "In the Wild", caption: "The finished site across every screen it lives on.", tone: "dark" },
-      { id: "brand", title: "Brand System", caption: "Email signatures in dark and light, so every send looks like Social Mulli.", tone: "light" },
     ],
     year: "2026",
     caseStudyAvailable: true,
@@ -322,16 +324,6 @@ export const projects: Project[] = [
       // Row 3, Brand touchpoints
       // Row 3, Email signature design bundle (iPad mockup)
       // Row 4, Email signature system (dark + light modes)
-      {
-        chapter: "brand",
-        label: "Email Signature System, Dark + Light",
-        aspect: "2.4/1",
-        fit: "cover",
-        items: [
-          { src: "/work/social-mulli/03-signature-dark.png", alt: "Email signature, dark mode" },
-          { src: "/work/social-mulli/04-signature-light.png", alt: "Email signature, light mode" },
-        ],
-      },
     ],
     pdfs: [
       { label: "Marketing Audit Sample", href: "/work/social-mulli/marketing-audit.pdf" },

@@ -4,6 +4,7 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE_GRID } from "@/components/ui/grid";
 import StatCounter from "./StatCounter";
 import GalleryRowView from "./GalleryRowView";
+import { MetricsCards, MetricsPaths } from "./AdMetricsHero";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -43,6 +44,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
               background: `radial-gradient(60% 55% at 78% 18%, ${accent}33 0%, transparent 60%), radial-gradient(45% 40% at 10% 90%, ${accent}1f 0%, transparent 65%)`,
             }}
           />
+          {project.heroVisual === "ad-dashboard" && <MetricsPaths color={accent} />}
         </div>
         <div className={`relative ${SITE_GRID} pt-32 md:pt-40`}>
           <div className="flex items-center gap-2 mb-10 md:mb-14 font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase">
@@ -53,59 +55,126 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
             <span style={{ color: accent }}>{project.title}</span>
           </div>
 
-          <p className="font-mono text-[0.62rem] font-medium tracking-[0.25em] uppercase flex items-center gap-3 mb-5" style={{ color: accent }}>
-            <span className="w-6 h-px" style={{ background: accent }} />
-            {project.category}
-          </p>
+          {project.heroVisual === "ad-dashboard" ? (
+            /* Two columns: the story on the left, a live ad dashboard on the right */
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              <div className="lg:col-span-7 relative z-[2]">
+              <p className="font-mono text-[0.62rem] font-medium tracking-[0.25em] uppercase flex items-center gap-3 mb-5" style={{ color: accent }}>
+                <span className="w-6 h-px" style={{ background: accent }} />
+                {project.category}
+              </p>
 
-          <h1
-            className="font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
-            style={{ fontSize: "clamp(3.5rem, 12.5vw, 12rem)" }}
-          >
-            {project.title}
-          </h1>
-
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-8 md:mt-10">
-            <p className="lg:col-span-6 font-sans text-base md:text-lg text-snow/75 leading-relaxed max-w-xl">
-              {project.shortDescription}
-            </p>
-            <dl className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-snow/15 pt-6 self-start">
-              {facts.map((f) => (
-                <div key={f.k} className={f.k === "Services" ? "col-span-2" : ""}>
-                  <dt className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-snow/45 mb-2">{f.k}</dt>
-                  <dd className="font-sans text-sm text-snow/90 leading-snug">{f.v}</dd>
-                </div>
-              ))}
-              {(project.liveUrl || project.pdfs?.length) && (
-                <div className="col-span-2 sm:col-span-4 flex flex-wrap items-center gap-x-8 gap-y-4">
-                  {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase transition-opacity hover:opacity-75"
-                    style={{ color: accent }}
-                  >
-                    Visit {host}
-                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border" style={{ borderColor: `${accent}66` }}>↗</span>
-                  </a>
+                <h1
+                  className="font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
+                  style={{ fontSize: "clamp(3.5rem, 8vw, 7.5rem)" }}
+                >
+                  {project.title.split(" ").map((w) => (
+                    <span key={w} className="block">{w}</span>
+                  ))}
+                </h1>
+                <p className="mt-8 font-sans text-base md:text-lg text-snow/75 leading-relaxed max-w-xl">
+                  {project.shortDescription}
+                </p>
+                <dl className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-snow/15 pt-6 max-w-2xl">
+                  {facts.map((f) => (
+                    <div key={f.k} className={f.k === "Services" ? "col-span-2" : ""}>
+                      <dt className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-snow/45 mb-2">{f.k}</dt>
+                      <dd className="font-sans text-sm text-snow/90 leading-snug">{f.v}</dd>
+                    </div>
+                  ))}
+                  {(project.liveUrl || project.pdfs?.length) && (
+                    <div className="col-span-2 sm:col-span-4 flex flex-wrap items-center gap-x-8 gap-y-4">
+                      {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase transition-opacity hover:opacity-75"
+                        style={{ color: accent }}
+                      >
+                        Visit {host}
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border" style={{ borderColor: `${accent}66` }}>↗</span>
+                      </a>
+                      )}
+                      {project.pdfs?.map((pdf) => (
+                        <a
+                          key={pdf.href}
+                          href={pdf.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase text-snow/80 hover:text-snow transition-colors"
+                        >
+                          {pdf.label}
+                          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-snow/25">↓</span>
+                        </a>
+                      ))}
+                    </div>
                   )}
-                  {project.pdfs?.map((pdf) => (
+                </dl>
+              </div>
+              <div className="hidden lg:block lg:col-span-5 relative h-[520px] z-[1]">
+                <div className="absolute inset-y-0 left-8 right-0">
+                  <MetricsCards accent={accent} />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+            <p className="font-mono text-[0.62rem] font-medium tracking-[0.25em] uppercase flex items-center gap-3 mb-5" style={{ color: accent }}>
+              <span className="w-6 h-px" style={{ background: accent }} />
+              {project.category}
+            </p>
+
+            <h1
+              className="relative z-[2] font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
+              style={{ fontSize: "clamp(3.5rem, 12.5vw, 12rem)" }}
+            >
+              {project.title}
+            </h1>
+
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-8 md:mt-10">
+              <p className="lg:col-span-6 font-sans text-base md:text-lg text-snow/75 leading-relaxed max-w-xl">
+                {project.shortDescription}
+              </p>
+              <dl className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-snow/15 pt-6 self-start">
+                {facts.map((f) => (
+                  <div key={f.k} className={f.k === "Services" ? "col-span-2" : ""}>
+                    <dt className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-snow/45 mb-2">{f.k}</dt>
+                    <dd className="font-sans text-sm text-snow/90 leading-snug">{f.v}</dd>
+                  </div>
+                ))}
+                {(project.liveUrl || project.pdfs?.length) && (
+                  <div className="col-span-2 sm:col-span-4 flex flex-wrap items-center gap-x-8 gap-y-4">
+                    {project.liveUrl && (
                     <a
-                      key={pdf.href}
-                      href={pdf.href}
+                      href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase text-snow/80 hover:text-snow transition-colors"
+                      className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase transition-opacity hover:opacity-75"
+                      style={{ color: accent }}
                     >
-                      {pdf.label}
-                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-snow/25">↓</span>
+                      Visit {host}
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border" style={{ borderColor: `${accent}66` }}>↗</span>
                     </a>
-                  ))}
-                </div>
-              )}
-            </dl>
-          </div>
+                    )}
+                    {project.pdfs?.map((pdf) => (
+                      <a
+                        key={pdf.href}
+                        href={pdf.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase text-snow/80 hover:text-snow transition-colors"
+                      >
+                        {pdf.label}
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-snow/25">↓</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </dl>
+            </div>
+            </>
+          )}
 
           {/* Cover, sitting over the edge into the next section */}
           {project.heroImage && (

@@ -574,3 +574,39 @@ input:focus, textarea:focus, select:focus { outline: none; }
   from { width: 0; }
   to   { width: 100%; }
 }
+
+/* ─── Ad-metrics hero (agency case studies) ─── */
+.metrics-path {
+  stroke-dasharray: 0.45 0.55;
+  animation: metricsPath linear infinite;
+}
+@keyframes metricsPath {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: -1; }
+}
+.metrics-float { animation: metricsFloat 7s ease-in-out infinite; }
+@keyframes metricsFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.metrics-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: metricsDraw 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+@keyframes metricsDraw { to { stroke-dashoffset: 0; } }
+.metrics-fade { opacity: 0; animation: metricsFade 1s ease 1.6s forwards; }
+@keyframes metricsFade { to { opacity: 1; } }
+.metrics-bar { width: 0; animation: metricsBar 2s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards; }
+@keyframes metricsBar { to { width: 72%; } }
+.metrics-toast { animation: metricsToast 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes metricsToast {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .metrics-path, .metrics-float, .metrics-toast { animation: none; }
+  .metrics-draw { animation: none; stroke-dashoffset: 0; }
+  .metrics-fade { animation: none; opacity: 1; }
+  .metrics-bar { animation: none; width: 72%; }
+}
