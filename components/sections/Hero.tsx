@@ -29,7 +29,7 @@ const MOBILE: Slide[] = [
   { src: "/hero/m-o2suites-2.jpg", project: "O2 Suites", category: "Website · Patient Story", year: "2026" },
 ];
 
-const ROTATION_MS = 4500;
+const ROTATION_MS = 3800;
 
 /**
  * Shared grid container, so the caption's edges line up with the rest of

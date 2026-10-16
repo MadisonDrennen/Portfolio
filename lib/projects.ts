@@ -87,7 +87,6 @@ export const projects: Project[] = [
     caseStudyAvailable: true,
     heroImage: "/work/gymrise/cover.jpg",
     heroCompact: true,
-    liveSite: { url: "https://gymrise.com", scroll: "/work/gymrise/site-full.jpg" },
     challenge:
       "GYMRISE was scaling fast in the fitness industry and needed a brand presence that matched the ambition.\n\nThe website, marketing assets, and content needed to feel unified, built around a single visual system that could ship at the speed the program was growing.",
     approach:
@@ -180,9 +179,6 @@ export const projects: Project[] = [
         ],
       },
     ],
-    pdfs: [
-      { label: "Brand Guide", href: "/work/gymrise/brand-guide.pdf" },
-    ],
   },
   {
     slug: "social-mulli",
@@ -246,63 +242,48 @@ export const projects: Project[] = [
         ],
       },
       // Row, Content & Post Graphics
-      // Reels & Motion (mockup-approved exports)
+      // Original posts and reels (Danelle has approved appearing in these).
       {
         label: "Reels & Motion",
         aspect: "9/16",
         fit: "cover",
         items: [
-          { src: "/work/social-mulli/reels/website-redesign.mp4", alt: "Social Mulli website redesign reel", type: "video" },
-          { src: "/work/social-mulli/reels/website-before-after.mp4", alt: "Social Mulli website before and after reel", type: "video" },
-          { src: "/work/social-mulli/reels/we-do.mp4", alt: "Social Mulli what we do reel", type: "video" },
-          { src: "/work/social-mulli/reels/january.mp4", alt: "Social Mulli January reel", type: "video" },
-          { src: "/work/social-mulli/reels/pendulum.mp4", alt: "Social Mulli pendulum reel", type: "video" },
-        ],
-      },
-      // Social media designs. Mockup-approved exports: names are already
-      // placeholder text, so no redaction needed.
-      {
-        label: "Audit & Reporting Posts",
-        aspect: "4/5",
-        fit: "cover",
-        items: [
-          { src: "/work/social-mulli/social/bad-report-vs-good-report-1.jpg", alt: "Bad report vs good report post" },
-          { src: "/work/social-mulli/social/bad-report-vs-good-report-2.jpg", alt: "Bad report vs good report post, comparison" },
-          { src: "/work/social-mulli/social/what-a-real-audit-checks-1.jpg", alt: "What a real audit checks post" },
-          { src: "/work/social-mulli/social/what-a-real-audit-checks-2.jpg", alt: "What a real audit checks post, checklist" },
+          { src: "/work/social-mulli/originals/reel-free-audit.mp4", alt: "Free marketing audit reel", type: "video" },
+          { src: "/work/social-mulli/originals/reel-we-do.mp4", alt: "What we do reel", type: "video" },
+          { src: "/work/social-mulli/originals/reel-january.mp4", alt: "January reel", type: "video" },
+          { src: "/work/social-mulli/originals/reel-pendulum.mp4", alt: "Pendulum brand reel", type: "video" },
         ],
       },
       {
-        label: "Meta Ads & Trial Offers",
+        label: "Photo Posts",
         aspect: "4/5",
         fit: "cover",
         items: [
-          { src: "/work/social-mulli/social/own-your-meta-account-1.jpg", alt: "Own your Meta account post" },
-          { src: "/work/social-mulli/social/own-your-meta-account-2.jpg", alt: "Own your Meta account post, steps" },
-          { src: "/work/social-mulli/social/trials-that-show-up-1.jpg", alt: "Trials that show up post" },
-          { src: "/work/social-mulli/social/trials-that-show-up-2.jpg", alt: "Trials that show up post, funnel" },
+          { src: "/work/social-mulli/originals/fastest-reply.jpg", alt: "The fastest reply wins the member, photo post" },
+          { src: "/work/social-mulli/originals/ads-not-scrolled-past.jpg", alt: "Making ads people don't scroll past, photo post" },
+          { src: "/work/social-mulli/originals/creative-gets-the-click.jpg", alt: "Creative gets the click, strategy gets the result, photo post" },
         ],
       },
       {
-        label: "Marketing Tips Series",
+        label: "Post Graphics",
         aspect: "4/5",
         fit: "cover",
         items: [
-          { src: "/work/social-mulli/social/whats-leaking-1.jpg", alt: "What's leaking post" },
-          { src: "/work/social-mulli/social/whats-leaking-2.jpg", alt: "What's leaking post, breakdown" },
-          { src: "/work/social-mulli/social/make-ai-stop-looking-like-ai-1.jpg", alt: "Make AI stop looking like AI post" },
-          { src: "/work/social-mulli/social/make-ai-stop-looking-like-ai-2.jpg", alt: "Make AI stop looking like AI post, examples" },
+          { src: "/work/social-mulli/originals/no-magic-pill.jpg", alt: "No magic pill, just the reps, post graphic" },
+          { src: "/work/social-mulli/originals/nobody-watching.jpg", alt: "Most of it happens when nobody's watching, post graphic" },
+          { src: "/work/social-mulli/originals/we-read-the-numbers.jpg", alt: "We read the numbers before we spend yours, post graphic" },
+          { src: "/work/social-mulli/originals/ads-managed-daily.jpg", alt: "Ads managed daily, numbers reported weekly, post graphic" },
         ],
       },
       {
-        label: "Photo Posts & Graphics",
+        label: "Campaigns & Animated Posts",
         aspect: "4/5",
         fit: "cover",
         items: [
-          { src: "/work/social-mulli/social/photo-posts-1.jpg", alt: "Photo post, gym owner with tablet" },
-          { src: "/work/social-mulli/social/photo-posts-2.jpg", alt: "Photo post, laptop workflow" },
-          { src: "/work/social-mulli/social/post-graphics-1.jpg", alt: "Testimonial quote graphic" },
-          { src: "/work/social-mulli/social/post-graphics-2.jpg", alt: "Campaign post graphic" },
+          { src: "/work/social-mulli/originals/longevity-project.jpg", alt: "Join the Longevity Project campaign post" },
+          { src: "/work/social-mulli/originals/reps-lab.jpg", alt: "REPS Lab client portal post" },
+          { src: "/work/social-mulli/originals/anim-weekly-report.mp4", alt: "Weekly report animated post", type: "video" },
+          { src: "/work/social-mulli/originals/anim-every-gym-gets-leads.mp4", alt: "Every gym gets leads animated post", type: "video" },
         ],
       },
       {
@@ -327,14 +308,6 @@ export const projects: Project[] = [
         ],
       },
       // Row 3, Email signature design bundle (iPad mockup)
-      {
-        label: "Email Signature Design Bundle",
-        aspect: "3/4",
-        fit: "contain",
-        items: [
-          { src: "/work/social-mulli/email-signature-bundle.png", alt: "Social Mulli Email Signature Design Bundle, iPad mockup" },
-        ],
-      },
       // Row 4, Email signature system (dark + light modes)
       {
         label: "Email Signature System, Dark + Light",

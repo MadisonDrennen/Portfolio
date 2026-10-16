@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SectionLabel from "@/components/ui/SectionLabel";
 import LoopingWords from "@/components/ui/looping-words";
 import GlassFold from "@/components/ui/glass-fold";
 
@@ -285,28 +283,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── CTA, Let's connect ── */}
-        <section className="relative z-10 px-6 py-20 md:py-28 bg-ivory overflow-hidden border-t border-ink/8">
-          <div className="chrome-aura chrome-aura--berry -top-20 left-1/2 -translate-x-1/2 w-[50%] h-[18rem] opacity-50" />
-
-          <div className="relative max-w-3xl mx-auto text-center">
-            <SectionLabel label="Get in Touch" className="justify-center" />
-            <h2
-              className="font-display font-bold text-ink leading-[1.0] tracking-[-0.045em] mt-6 mb-6 pb-1"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
-            >
-              Working on something{" "}
-              <span className="text-berry">interesting?</span>
-            </h2>
-            <p className="font-sans text-base md:text-lg font-normal text-ink/70 mb-10 leading-relaxed max-w-xl mx-auto">
-              Open to freelance work, brand collaborations, and design partnerships.
-            </p>
-            <Link href="/#contact" className="btn-primary px-8 py-4">
-              Let&apos;s Talk
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
