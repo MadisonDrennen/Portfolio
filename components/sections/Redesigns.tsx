@@ -68,9 +68,9 @@ export default function Redesigns() {
           <TiltedGridHero
             images={REDESIGN_SHOTS}
             aspectRatio={16 / 10}
-            tileHeight={47}
+            tileHeight={53}
             gap={5}
-            axis={62}
+            axis={63}
             curve={55}
             speed={6}
             fade={0}
