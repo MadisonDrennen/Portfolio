@@ -20,6 +20,7 @@ const SITES = [
 
 export default function LaptopStack() {
   const [i, setI] = useState(0);
+  const [prev, setPrev] = useState(-1);
   const [reduced, setReduced] = useState(false);
   const fallback = useRef(0);
 
@@ -34,11 +35,20 @@ export default function LaptopStack() {
   // With reduced motion there is no scroll, so step through statically.
   useEffect(() => {
     if (!reduced) return;
-    fallback.current = window.setInterval(() => setI((n) => (n + 1) % SITES.length), 4000);
+    fallback.current = window.setInterval(() => {
+      setI((n) => {
+        setPrev(n);
+        return (n + 1) % SITES.length;
+      });
+    }, 4000);
     return () => clearInterval(fallback.current);
   }, [reduced]);
 
-  const next = () => setI((n) => (n + 1) % SITES.length);
+  const next = () =>
+    setI((n) => {
+      setPrev(n);
+      return (n + 1) % SITES.length;
+    });
 
   return (
     <div aria-hidden className="relative w-full h-full flex items-center justify-center laptop-float">
@@ -47,20 +57,35 @@ export default function LaptopStack() {
         <div className="relative mx-[6%] rounded-[18px] md:rounded-[22px] bg-[#0b0b0f] p-[1.8%] pb-[2.4%] ring-1 ring-white/15 shadow-[0_40px_80px_-30px_rgba(37,2,9,0.85),inset_0_0_0_1px_rgba(255,255,255,0.04)]">
           <span className="absolute top-[0.8%] left-1/2 -translate-x-1/2 w-[0.9%] aspect-square rounded-full bg-white/20" />
           <div className="laptop-screen relative aspect-[16/10] rounded-[6px] md:rounded-[8px] overflow-hidden bg-white">
-            {SITES.map((s, k) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={k === i ? `${s.src}-on` : s.src}
-                src={s.src}
-                alt=""
-                draggable={false}
-                onAnimationEnd={k === i ? next : undefined}
-                className={`absolute inset-x-0 top-0 w-full h-auto transition-opacity duration-700 ${k === i && !reduced ? "laptop-scroll" : ""}`}
-                style={{ opacity: k === i ? 1 : 0 }}
-              />
-            ))}
+            {SITES.map((s, k) => {
+              const state = k === i ? "on" : k === prev ? "out" : "wait";
+              return (
+                <div
+                  key={s.src}
+                  className="absolute inset-0"
+                  style={{
+                    // Incoming slides in from the right, outgoing leaves to the left;
+                    // waiting screens park off to the right with no transition.
+                    transform: state === "on" ? "translateX(0)" : state === "out" ? "translateX(-100%)" : "translateX(100%)",
+                    transition: state === "wait" ? "none" : "transform 900ms cubic-bezier(0.76, 0, 0.24, 1)",
+                    zIndex: state === "on" ? 2 : state === "out" ? 1 : 0,
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={s.src}
+                    alt=""
+                    draggable={false}
+                    onAnimationEnd={state === "on" ? next : undefined}
+                    className={`absolute inset-x-0 top-0 w-full h-auto ${
+                      reduced ? "" : state === "on" ? "laptop-scroll" : state === "out" ? "laptop-scrolled" : ""
+                    }`}
+                  />
+                </div>
+              );
+            })}
             {/* glass sheen */}
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
+            <div className="absolute inset-0 z-[3] pointer-events-none bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
             {/* site label */}
             <span className="absolute left-3 bottom-3 z-10 px-2.5 py-1 rounded-full bg-black/55 backdrop-blur-md font-mono text-[0.5rem] md:text-[0.55rem] tracking-[0.18em] uppercase text-white/85">
               {SITES[i].name}

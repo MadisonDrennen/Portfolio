@@ -594,6 +594,7 @@ input:focus, textarea:focus, select:focus { outline: none; }
 /* Laptop screen: scroll a full-page capture top to bottom, then hand off */
 .laptop-screen { container-type: size; }
 .laptop-scroll { animation: laptopScroll 11s cubic-bezier(0.45, 0, 0.55, 1) 0.9s both; }
+.laptop-scrolled { transform: translateY(calc(-100% + 100cqh)); }
 @keyframes laptopScroll {
   0%   { transform: translateY(0); }
   88%  { transform: translateY(calc(-100% + 100cqh)); }
