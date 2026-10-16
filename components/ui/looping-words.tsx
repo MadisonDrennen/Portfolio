@@ -56,7 +56,7 @@ export function LoopingWords({
       index.current += 1;
       gsap.to(list, {
         yPercent: -step * index.current,
-        duration: 1.2,
+        duration: 0.95,
         ease: "elastic.out(1, 0.85)",
         onStart: () => fit(),
         onComplete: () => {
@@ -75,7 +75,7 @@ export function LoopingWords({
     const onResize = () => fit(true);
     window.addEventListener("resize", onResize);
 
-    const timeline = gsap.timeline({ repeat: -1, delay: 1 }).call(move).to({}, { duration: 2 });
+    const timeline = gsap.timeline({ repeat: -1, delay: 0.6 }).call(move).to({}, { duration: 1.3 });
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) timeline.pause();
 
     return () => {

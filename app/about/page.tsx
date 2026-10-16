@@ -138,7 +138,7 @@ export default function AboutPage() {
             color1="#89235B"
             color2="#250209"
             color3="#FFCAE4"
-            speed={0.45}
+            speed={0.65}
             scale={1}
             noise={0.1}
             className="absolute inset-0"
