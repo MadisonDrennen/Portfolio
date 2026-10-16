@@ -115,6 +115,12 @@ export default function Navbar() {
 
           <nav className="hidden md:flex items-center gap-8">
             <Link
+              href="/"
+              className={`font-mono text-[0.65rem] font-medium tracking-[0.22em] uppercase transition-colors duration-300 link-underline ${linkColor}`}
+            >
+              Home
+            </Link>
+            <Link
               href="/about"
               className={`font-mono text-[0.65rem] font-medium tracking-[0.22em] uppercase transition-colors duration-300 link-underline ${linkColor}`}
             >
@@ -228,6 +234,14 @@ export default function Navbar() {
             <Logo variant="dark" />
           </div>
           <div className="w-8 h-px bg-berry/70 mb-1" />
+
+          <Link
+            href="/"
+            onClick={() => setMenuOpen(false)}
+            className="font-display text-4xl font-bold text-snow hover:text-berry transition-colors duration-300 tracking-[-0.03em]"
+          >
+            Home
+          </Link>
 
           <Link
             href="/about"
