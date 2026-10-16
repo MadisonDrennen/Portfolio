@@ -76,8 +76,9 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
                   <dd className="font-sans text-sm text-snow/90 leading-snug">{f.v}</dd>
                 </div>
               ))}
-              {project.liveUrl && (
-                <div className="col-span-2 sm:col-span-4">
+              {(project.liveUrl || project.pdfs?.length) && (
+                <div className="col-span-2 sm:col-span-4 flex flex-wrap items-center gap-x-8 gap-y-4">
+                  {project.liveUrl && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
@@ -88,6 +89,19 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
                     Visit {host}
                     <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border" style={{ borderColor: `${accent}66` }}>↗</span>
                   </a>
+                  )}
+                  {project.pdfs?.map((pdf) => (
+                    <a
+                      key={pdf.href}
+                      href={pdf.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase text-snow/80 hover:text-snow transition-colors"
+                    >
+                      {pdf.label}
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-snow/25">↓</span>
+                    </a>
+                  ))}
                 </div>
               )}
             </dl>

@@ -205,15 +205,26 @@ export const projects: Project[] = [
     client: "Social Mulli",
     category: "Brand & Web Design",
     shortDescription:
-      "Designed and built the Social Mulli website from scratch, plus the brand identity, OG visuals, and email signature system that complete the system.",
+      "Designed and built the Social Mulli website from scratch, plus the brand identity, social content, reels, and email signature system that complete the system.",
     whatIDid: [
       "Designed & built the Social Mulli website end-to-end",
+      "Social posts, reels & animated content",
       "Meta ad creative for Anytime Fitness campaigns",
       "Email signature system (dark + light modes)",
       "OG visuals, audit deliverables & sales collateral",
     ],
     tags: ["Web Design & Build", "Brand Identity", "Meta Ads", "Marketing Systems"],
     accentColor: "#3B6EFF",
+    brand: { dark: "#05082E", accent: "#3B6EFF" },
+    liveUrl: "https://socialmulli.com",
+    services: ["Website Design & Build", "Brand Identity", "Social Content", "Reels & Motion", "Meta Ads"],
+    chapters: [
+      { id: "website", title: "The Website", caption: "Designed and built from scratch. A site that converts on first read.", tone: "light" },
+      { id: "reels", title: "Reels & Motion", caption: "Motion pieces that put the REPS point of view into every feed.", tone: "dark" },
+      { id: "social", title: "Social Content", caption: "Photo posts, post graphics, campaigns and Meta ads, all speaking one voice.", tone: "light" },
+      { id: "mockups", title: "In the Wild", caption: "The finished site across every screen it lives on.", tone: "dark" },
+      { id: "brand", title: "Brand System", caption: "Email signatures in dark and light, so every send looks like Social Mulli.", tone: "light" },
+    ],
     year: "2026",
     caseStudyAvailable: true,
     heroImage: "/work/social-mulli/cover-monitor.jpg",
@@ -221,17 +232,11 @@ export const projects: Project[] = [
     challenge:
       "Social Mulli was launching as a no-nonsense marketing partner for gyms and local businesses. The brand had to feel grown-up, confident, and refreshingly direct, opposite of the over-promising agency stereotype.\n\nIt needed a complete identity, a website that converted on first read, and assets the team could ship the day they went live.",
     approach:
-      "I designed and built the Social Mulli website end-to-end, every page, every interaction, every section. Then I extended the same visual system across the OG image, email signatures, and audit deliverables.\n\nEverything reinforces one point of view: \"Marketing isn't a magic pill. It's the reps.\" The site, signatures, and pitch assets all share one voice, a brand that feels confident and consistent everywhere it shows up.",
-    results: [
-      { value: "1 Voice", label: "Across every touchpoint" },
-      { value: "Full Stack", label: "Brand, web & systems" },
-      { value: "Live", label: "Day one ready" },
-      { value: "On-Brand", label: "Every team handoff" },
-    ],
-    resultsCaption: "Focus: One identity, shipped across web, email, and pitch.",
+      "I designed and built the Social Mulli website end-to-end, every page, every interaction, every section. Then I extended the same visual system across social content, email signatures, and audit deliverables.\n\nEverything reinforces one point of view: \"Marketing isn't a magic pill. It's the reps.\" The site, signatures, and pitch assets all share one voice, a brand that feels confident and consistent everywhere it shows up.",
     gallery: [
       // Row 1, THE BUILD: full Social Mulli website (three full-page screenshots)
       {
+        chapter: "website",
         label: "Designed & Built, The Social Mulli Website",
         aspect: "3/4",
         fit: "cover",
@@ -245,6 +250,7 @@ export const projects: Project[] = [
       // Row, Content & Post Graphics
       // Original posts and reels (Danelle has approved appearing in these).
       {
+        chapter: "reels",
         label: "Reels & Motion",
         aspect: "9/16",
         fit: "cover",
@@ -256,6 +262,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         label: "Photo Posts",
         aspect: "4/5",
         fit: "cover",
@@ -266,6 +273,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         label: "Post Graphics",
         aspect: "4/5",
         fit: "cover",
@@ -277,6 +285,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         label: "Campaigns & Animated Posts",
         aspect: "4/5",
         fit: "cover",
@@ -288,6 +297,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         label: "Meta Ads",
         aspect: "4/5",
         fit: "contain",
@@ -300,6 +310,7 @@ export const projects: Project[] = [
       },
       // Website mockups, after the social work
       {
+        chapter: "mockups",
         label: "Website Mockups",
         aspect: "16/9",
         fit: "cover",
@@ -312,6 +323,7 @@ export const projects: Project[] = [
       // Row 3, Email signature design bundle (iPad mockup)
       // Row 4, Email signature system (dark + light modes)
       {
+        chapter: "brand",
         label: "Email Signature System, Dark + Light",
         aspect: "2.4/1",
         fit: "cover",
