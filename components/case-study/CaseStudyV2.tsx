@@ -4,9 +4,18 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE_GRID } from "@/components/ui/grid";
 import StatCounter from "./StatCounter";
 import GalleryRowView from "./GalleryRowView";
-import { MetricsCards, MetricsPaths } from "./AdMetricsHero";
+import { MetricsCards } from "./AdMetricsHero";
+import { ParticleTitle, type Palette } from "@/components/ui/particle-title";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+
+const rgb = (hex: string): [number, number, number] => {
+  const n = parseInt(hex.replace("#", ""), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+};
+
+const GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E\")";
 
 /**
  * Chapter case-study layout: a full-bleed opening in the client's own
@@ -18,6 +27,16 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
   const dark = project.brand?.dark ?? "#250209";
   const accent = project.brand?.accent ?? project.accentColor;
   const host = project.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const hues = project.brand?.hues;
+  const titlePalette: Palette = {
+    ink: [255, 243, 242],
+    page: rgb(dark),
+    blobs: [
+      { rgb: rgb(accent), a: 0.6, fx: 0.04, fy: 0.08, fw: 0.62, fh: 0.78 },
+      { rgb: rgb(hues?.[0] ?? accent), a: 0.4, fx: 0.44, fy: 0.22, fw: 0.54, fh: 0.7 },
+      { rgb: rgb(hues?.[1] ?? "#FFCAE4"), a: 0.3, fx: 0.3, fy: 0.44, fw: 0.44, fh: 0.56 },
+    ],
+  };
 
   const facts = [
     { k: "Client", v: project.client },
@@ -36,7 +55,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
     <>
       {/* ── 1. Opening ── */}
       {/* No overflow clipping here: the cover hangs over into the results. */}
-      <section data-nav-theme="dark" className="relative text-snow" style={{ background: dark }}>
+      <section data-nav-theme="dark" className="relative overflow-x-clip text-snow" style={{ background: dark }}>
         <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
             className="absolute inset-0"
@@ -44,7 +63,20 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
               background: `radial-gradient(60% 55% at 78% 18%, ${accent}33 0%, transparent 60%), radial-gradient(45% 40% at 10% 90%, ${accent}1f 0%, transparent 65%)`,
             }}
           />
-          {project.heroVisual === "ad-dashboard" && <MetricsPaths color={accent} />}
+          {hues && (
+            <>
+              {/* Glowing hues that slowly drift */}
+              <div className="absolute -top-[20%] right-[-10%] w-[70%] h-[90%] rounded-full blur-[110px] opacity-60 hero-drift" style={{ background: `radial-gradient(closest-side, ${accent}, transparent)` }} />
+              <div className="absolute top-[-15%] left-[-12%] w-[55%] h-[70%] rounded-full blur-[120px] opacity-45 hero-drift-slow" style={{ background: `radial-gradient(closest-side, ${hues[0]}, transparent)` }} />
+              {hues[1] && (
+                <div className="absolute bottom-[8%] left-[25%] w-[40%] h-[35%] rounded-full blur-[130px] opacity-[0.18] hero-drift" style={{ background: `radial-gradient(closest-side, ${hues[1]}, transparent)`, animationDelay: "-6s" }} />
+              )}
+              {/* Depth: lit from above, falling into shadow, darker edges */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 35%, rgba(0,0,0,0.35) 100%)" }} />
+              <div className="absolute inset-0" style={{ background: "radial-gradient(120% 90% at 50% 30%, transparent 55%, rgba(0,0,0,0.55) 100%)" }} />
+              <div className="absolute inset-0 opacity-[0.07] mix-blend-overlay" style={{ backgroundImage: GRAIN }} />
+            </>
+          )}
         </div>
         <div className={`relative ${SITE_GRID} pt-32 md:pt-40`}>
           <div className="flex items-center gap-2 mb-10 md:mb-14 font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase">
@@ -64,14 +96,12 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
                 {project.category}
               </p>
 
-                <h1
+                <ParticleTitle
+                  lines={project.title.split(" ")}
+                  palette={titlePalette}
                   className="font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
                   style={{ fontSize: "clamp(3.5rem, 8vw, 7.5rem)" }}
-                >
-                  {project.title.split(" ").map((w) => (
-                    <span key={w} className="block">{w}</span>
-                  ))}
-                </h1>
+                />
                 <p className="mt-8 font-sans text-base md:text-lg text-snow/75 leading-relaxed max-w-xl">
                   {project.shortDescription}
                 </p>

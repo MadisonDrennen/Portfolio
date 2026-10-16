@@ -5,53 +5,12 @@ import { useEffect, useRef, useState } from "react";
 /* ────────────────────────────────────────────────────────────────
  * Digital-marketing hero dressing for agency case studies.
  *
- *  <MetricsPaths>  flowing ribbon lines behind everything (after the
- *                  "background paths" idea, done in SVG + CSS, no deps)
  *  <MetricsCards>  a floating ad dashboard: KPIs that count up, a chart
  *                  line that draws itself, Meta / Google Ads cards and
  *                  lead notifications that cycle.
  *
  * Decorative only (aria-hidden). Honours prefers-reduced-motion.
  * ──────────────────────────────────────────────────────────────── */
-
-function paths(position: number) {
-  return Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${380 - i * 5 * position} -${189 + i * 6} -${
-      312 - i * 5 * position
-    } ${216 - i * 6} ${152 - i * 5 * position} ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
-      684 - i * 5 * position
-    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    width: 0.5 + i * 0.035,
-    opacity: 0.04 + i * 0.012,
-    // Deterministic per-line timing so server and client render the same.
-    duration: 22 + ((i * 7) % 11),
-    delay: -((i * 13) % 20),
-  }));
-}
-
-export function MetricsPaths({ color }: { color: string }) {
-  return (
-    <div aria-hidden className="absolute inset-0 pointer-events-none">
-      {[1, -1].map((pos) => (
-        <svg key={pos} className="absolute inset-0 w-full h-full" viewBox="0 0 696 316" fill="none" preserveAspectRatio="none">
-          {paths(pos).map((p) => (
-            <path
-              key={p.id}
-              d={p.d}
-              stroke={color}
-              strokeWidth={p.width}
-              strokeOpacity={p.opacity}
-              pathLength={1}
-              className="metrics-path"
-              style={{ animationDuration: `${p.duration}s`, animationDelay: `${p.delay}s` }}
-            />
-          ))}
-        </svg>
-      ))}
-    </div>
-  );
-}
 
 /* ── count-up number ─────────────────────────────────────────────── */
 function useCountUp(target: number, decimals = 0, delay = 0) {

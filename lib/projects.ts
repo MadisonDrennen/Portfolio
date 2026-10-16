@@ -69,7 +69,7 @@ export interface Project {
   /** Live site shown in a browser window that scrolls a full-page capture. */
   liveSite?: { url: string; scroll: string };
   /** The client's own colours, used by the chapter case-study layout. */
-  brand?: { dark: string; accent: string };
+  brand?: { dark: string; accent: string; /** Extra glow colours for a richer opening. */ hues?: string[] };
   /** Public URL of the live site, shown in the quick facts. */
   liveUrl?: string;
   /** Services for the quick-facts row. */
@@ -217,7 +217,7 @@ export const projects: Project[] = [
     ],
     tags: ["Web Design & Build", "Brand Identity", "Meta Ads", "Marketing Systems"],
     accentColor: "#3B6EFF",
-    brand: { dark: "#05082E", accent: "#3B6EFF" },
+    brand: { dark: "#05082E", accent: "#3B6EFF", hues: ["#6C4BFF", "#C6F432"] },
     heroVisual: "ad-dashboard",
     liveUrl: "https://socialmulli.com",
     services: ["Website Design & Build", "Brand Identity", "Social Content", "Reels & Motion", "Meta Ads"],
