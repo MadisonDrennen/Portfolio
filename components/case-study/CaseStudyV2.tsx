@@ -4,7 +4,6 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE_GRID } from "@/components/ui/grid";
 import StatCounter from "./StatCounter";
 import GalleryRowView from "./GalleryRowView";
-import { MetricsCards } from "./AdMetricsHero";
 import { ParticleTitle, type Palette } from "@/components/ui/particle-title";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -28,6 +27,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
   const accent = project.brand?.accent ?? project.accentColor;
   const host = project.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
   const hues = project.brand?.hues;
+  const titleSize = project.title.length > 8 ? "clamp(2rem, 8vw, 7.5rem)" : "clamp(3.5rem, 12.5vw, 12rem)";
   const titlePalette: Palette = {
     ink: [255, 243, 242],
     page: rgb(dark),
@@ -78,8 +78,8 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
             </>
           )}
         </div>
-        <div className={`relative ${SITE_GRID} pt-32 md:pt-40`}>
-          <div className="flex items-center gap-2 mb-10 md:mb-14 font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase">
+        <div className={`relative ${SITE_GRID} pt-28 md:pt-32`}>
+          <div className="flex items-center gap-2 mb-8 md:mb-10 font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase">
             <Link href="/" className="text-snow/45 hover:text-snow transition-colors">Home</Link>
             <span className="text-snow/25">/</span>
             <Link href="/#work" className="text-snow/45 hover:text-snow transition-colors">Work</Link>
@@ -87,80 +87,28 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
             <span style={{ color: accent }}>{project.title}</span>
           </div>
 
-          {project.heroVisual === "ad-dashboard" ? (
-            /* Two columns: the story on the left, a live ad dashboard on the right */
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-              <div className="lg:col-span-7 relative z-[2]">
-              <p className="font-mono text-[0.62rem] font-medium tracking-[0.25em] uppercase flex items-center gap-3 mb-5" style={{ color: accent }}>
-                <span className="w-6 h-px" style={{ background: accent }} />
-                {project.category}
-              </p>
-
-                <ParticleTitle
-                  lines={project.title.split(" ")}
-                  palette={titlePalette}
-                  className="font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
-                  style={{ fontSize: "clamp(3.5rem, 8vw, 7.5rem)" }}
-                />
-                <p className="mt-8 font-sans text-base md:text-lg text-snow/75 leading-relaxed max-w-xl">
-                  {project.shortDescription}
-                </p>
-                <dl className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-snow/15 pt-6 max-w-2xl">
-                  {facts.map((f) => (
-                    <div key={f.k} className={f.k === "Services" ? "col-span-2" : ""}>
-                      <dt className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-snow/45 mb-2">{f.k}</dt>
-                      <dd className="font-sans text-sm text-snow/90 leading-snug">{f.v}</dd>
-                    </div>
-                  ))}
-                  {(project.liveUrl || project.pdfs?.length) && (
-                    <div className="col-span-2 sm:col-span-4 flex flex-wrap items-center gap-x-8 gap-y-4">
-                      {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase transition-opacity hover:opacity-75"
-                        style={{ color: accent }}
-                      >
-                        Visit {host}
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border" style={{ borderColor: `${accent}66` }}>↗</span>
-                      </a>
-                      )}
-                      {project.pdfs?.map((pdf) => (
-                        <a
-                          key={pdf.href}
-                          href={pdf.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-3 font-mono text-[0.62rem] font-medium tracking-[0.22em] uppercase text-snow/80 hover:text-snow transition-colors"
-                        >
-                          {pdf.label}
-                          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-snow/25">↓</span>
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </dl>
-              </div>
-              <div className="hidden lg:block lg:col-span-5 relative h-[520px] z-[1]">
-                <div className="absolute inset-y-0 left-8 right-0">
-                  <MetricsCards accent={accent} />
-                </div>
-              </div>
-            </div>
-          ) : (
-            <>
             <p className="font-mono text-[0.62rem] font-medium tracking-[0.25em] uppercase flex items-center gap-3 mb-5" style={{ color: accent }}>
               <span className="w-6 h-px" style={{ background: accent }} />
               {project.category}
             </p>
 
-            <h1
-              className="relative z-[2] font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
-              style={{ fontSize: "clamp(3.5rem, 12.5vw, 12rem)" }}
-            >
-              {project.title}
-            </h1>
+            {project.particleTitle ? (
+              <div className="relative z-[2]">
+                <ParticleTitle
+                  lines={[project.title]}
+                  palette={titlePalette}
+                  className="font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2 whitespace-nowrap"
+                  style={{ fontSize: titleSize }}
+                />
+              </div>
+            ) : (
+              <h1
+                className="relative z-[2] font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
+                style={{ fontSize: titleSize }}
+              >
+                {project.title}
+              </h1>
+            )}
 
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-8 md:mt-10">
               <p className="lg:col-span-6 font-sans text-base md:text-lg text-snow/75 leading-relaxed max-w-xl">
@@ -203,12 +151,10 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
                 )}
               </dl>
             </div>
-            </>
-          )}
 
           {/* Cover, sitting over the edge into the next section */}
           {project.heroImage && (
-            <div className="relative mt-14 md:mt-20 -mb-24 md:-mb-40 z-10">
+            <div className="relative mt-10 md:mt-14 -mb-24 md:-mb-40 z-10">
               <div
                 className="overflow-hidden rounded-[18px] md:rounded-[26px] ring-1 ring-snow/10"
                 style={{ boxShadow: `0 50px 120px -40px ${accent}55, 0 40px 90px -40px rgba(0,0,0,0.8)` }}

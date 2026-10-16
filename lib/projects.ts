@@ -77,8 +77,8 @@ export interface Project {
   /** When set, the case study renders in the chapter layout, grouping
    *  gallery rows by their `chapter` id in this order. */
   chapters?: { id: string; title: string; caption: string; tone: "light" | "dark" }[];
-  /** Extra animated visual in the chapter layout's opening. */
-  heroVisual?: "ad-dashboard";
+  /** Headline dissolves into dust and regathers (chapter layout). */
+  particleTitle?: boolean;
 }
 
 export const projects: Project[] = [
@@ -218,7 +218,7 @@ export const projects: Project[] = [
     tags: ["Web Design & Build", "Brand Identity", "Meta Ads", "Marketing Systems"],
     accentColor: "#3B6EFF",
     brand: { dark: "#05082E", accent: "#3B6EFF", hues: ["#6C4BFF", "#C6F432"] },
-    heroVisual: "ad-dashboard",
+    particleTitle: true,
     liveUrl: "https://socialmulli.com",
     services: ["Website Design & Build", "Brand Identity", "Social Content", "Reels & Motion", "Meta Ads"],
     chapters: [
@@ -324,9 +324,6 @@ export const projects: Project[] = [
       // Row 3, Brand touchpoints
       // Row 3, Email signature design bundle (iPad mockup)
       // Row 4, Email signature system (dark + light modes)
-    ],
-    pdfs: [
-      { label: "Marketing Audit Sample", href: "/work/social-mulli/marketing-audit.pdf" },
     ],
   },
   {
