@@ -229,7 +229,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
 
       {/* ── 3. The story ── */}
       <section
-        className={`relative bg-snow pb-24 md:pb-32 ${project.results?.length ? "" : "pt-36 md:pt-56"}`}
+        className={`relative bg-snow pb-12 md:pb-16 ${project.results?.length ? "" : "pt-36 md:pt-56"}`}
       >
         <div className={`${SITE_GRID} grid lg:grid-cols-12 gap-12 lg:gap-16`}>
           <RevealOnScroll className="lg:col-span-4">
@@ -277,7 +277,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
           <section
             key={c.id}
             data-nav-theme={isDark ? "dark" : "light"}
-            className={`relative overflow-hidden py-20 md:py-28 ${isDark ? "text-snow" : "bg-snow-dark/40 text-ink"}`}
+            className={`relative overflow-hidden ${ci === 0 && !isDark ? "pt-10 md:pt-14" : "pt-20 md:pt-28"} pb-20 md:pb-28 ${isDark ? "text-snow" : "bg-snow-dark/40 text-ink"}`}
             style={isDark ? { background: dark } : undefined}
           >
             {isDark && (
