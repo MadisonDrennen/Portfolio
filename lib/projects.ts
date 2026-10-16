@@ -86,11 +86,11 @@ export const projects: Project[] = [
     client: "GYMRISE",
     category: "Brand, Web Design & Growth",
     shortDescription:
-      "Designed and built the GYMRISE website end-to-end, plus the full brand system, social campaigns, sales creative, and email signature suite that all live around it.",
+      "Designed and built the GYMRISE website end-to-end, plus the full brand system, social campaigns, and sales creative that all live around it.",
     whatIDid: [
       "Designed & built the GYMRISE website end-to-end",
       "Social media campaigns & content production",
-      "Sales creative, pricing sheets & email signatures",
+      "Sales creative & pricing sheets",
     ],
     tags: ["Web Design & Build", "Brand Systems", "Content & Social"],
     accentColor: "#D4255F",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     chapters: [
       { id: "website", title: "The Website", caption: "Designed and built end to end. Every page, every section, every interaction.", tone: "light" },
       { id: "reels", title: "Reels & Motion", caption: "Short-form motion that carries the brand into every feed.", tone: "dark" },
-      { id: "social", title: "Social Content", caption: "A weekly content system: client wins, testimonials, monthly numbers and seasonal campaigns.", tone: "light" },
+      { id: "social", title: "Social Content", caption: "A weekly content system: client wins, testimonials, monthly numbers and the leaderboard.", tone: "light" },
       { id: "mockups", title: "In the Wild", caption: "The finished site across every screen it lives on.", tone: "dark" },
     ],
     year: "2026",
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     challenge:
       "GYMRISE was scaling fast in the fitness industry and needed a brand presence that matched the ambition.\n\nThe website, marketing assets, and content needed to feel unified, built around a single visual system that could ship at the speed the program was growing.",
     approach:
-      "I designed and built the entire GYMRISE website myself, every page, every interaction, every section, then extended the same visual system across the brand kit, social campaigns, sales creative, and email signatures.\n\nEverything lives together: the same typography, the same energy, the same point of view. Owners, members, and prospects all see one brand, no matter where they meet it.",
+      "I designed and built the entire GYMRISE website myself, every page, every interaction, every section, then extended the same visual system across the brand kit, social campaigns, and sales creative.\n\nEverything lives together: the same typography, the same energy, the same point of view. Owners, members, and prospects all see one brand, no matter where they meet it.",
     results: [
       { value: "$231M+", label: "In Client PT Sales" },
       { value: "360+", label: "Active Operators" },
@@ -192,17 +192,6 @@ export const projects: Project[] = [
         fit: "cover",
         items: [
           { src: "/work/gymrise/social/leaderboard.jpg", alt: "Monthly leaderboard wall graphic" },
-        ],
-      },
-      {
-        chapter: "social",
-        label: "Seasonal Campaigns",
-        aspect: "4/5",
-        fit: "cover",
-        narrow: true,
-        items: [
-          { src: "/work/gymrise/social/halloween-1.jpg", alt: "Halloween campaign post" },
-          { src: "/work/gymrise/social/halloween-2.jpg", alt: "Halloween campaign post" },
         ],
       },
       // Website mockups, after the social work
