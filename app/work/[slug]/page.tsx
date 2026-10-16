@@ -4,6 +4,7 @@ import { projects } from "@/lib/projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SiteScroll from "@/components/ui/SiteScroll";
+import GalleryCarousel from "@/components/ui/GalleryCarousel";
 
 interface PageProps {
   params: { slug: string };
@@ -397,6 +398,9 @@ export default function CaseStudyPage({ params }: PageProps) {
                         </div>
                       )}
 
+                      {row.carousel ? (
+                        <GalleryCarousel items={row.items} aspect={row.aspect} accent={project.accentColor} />
+                      ) : (
                       <div className={`grid gap-3 md:gap-4 ${colsClass(row.items.length)} ${row.narrow ? "md:max-w-[50%] md:mx-auto" : ""}`}>
                         {row.items.map((item, i) => {
                           const isTransparent = row.bg === "transparent";
@@ -468,6 +472,7 @@ export default function CaseStudyPage({ params }: PageProps) {
                           );
                         })}
                       </div>
+                      )}
                     </div>
                   );
                 })}

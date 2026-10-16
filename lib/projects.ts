@@ -34,6 +34,8 @@ export type GalleryRow = {
   bg?: string;
   /** Show the row at half width, centred, so a short row keeps the tile size of its neighbours. */
   narrow?: boolean;
+  /** Render as a swipeable carousel instead of a grid (images only). */
+  carousel?: boolean;
   items: GalleryItem[];
 };
 
@@ -103,6 +105,7 @@ export const projects: Project[] = [
         label: "Designed & Built, The GYMRISE Website",
         aspect: "3/4",
         fit: "cover",
+        carousel: true,
         items: [
           { src: "/work/gymrise/site-01.jpg", alt: "GYMRISE website, homepage hero & client highlights" },
           { src: "/work/gymrise/site-02.jpg", alt: "GYMRISE website, system & member testimonials" },
@@ -174,16 +177,6 @@ export const projects: Project[] = [
         items: [
           { src: "/work/gymrise/social/halloween-1.jpg", alt: "Halloween campaign post" },
           { src: "/work/gymrise/social/halloween-2.jpg", alt: "Halloween campaign post" },
-        ],
-      },
-      // Row 7, Sales / marketing creative
-      {
-        label: "Sales & Promo Creative",
-        aspect: "4/3",
-        fit: "cover",
-        items: [
-          { src: "/work/gymrise/03-pricing.jpg", alt: "Program Pricing Sheet" },
-          { src: "/work/gymrise/05-offer.png", alt: "Vitals 2026 Conference Offer" },
         ],
       },
     ],

@@ -45,14 +45,23 @@ export default function Redesigns() {
       {/* ── Full-bleed redesign reel ── */}
       <RevealOnScroll>
         <div className="relative">
-          {/* Petal glow behind the row, so the screenshots light up */}
+          {/* Depth: a dark halo behind the row and a soft floor shadow
+              beneath it, so the screenshots float off the Berry. */}
           <div
             aria-hidden
-            className="absolute inset-x-0 top-[36%] h-[56%] pointer-events-none"
+            className="absolute inset-x-0 top-[34%] h-[60%] pointer-events-none"
             style={{
               background:
-                "radial-gradient(50% 55% at 50% 50%, rgba(255,202,228,0.45) 0%, rgba(255,202,228,0.15) 45%, transparent 75%)",
-              filter: "blur(40px)",
+                "radial-gradient(48% 50% at 50% 50%, rgba(37,2,9,0.55) 0%, rgba(74,7,36,0.3) 45%, transparent 75%)",
+              filter: "blur(30px)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="absolute left-[8%] right-[8%] bottom-[2%] h-[20%] pointer-events-none rounded-[50%]"
+            style={{
+              background: "radial-gradient(50% 50% at 50% 50%, rgba(37,2,9,0.8) 0%, rgba(37,2,9,0.35) 45%, transparent 72%)",
+              filter: "blur(22px)",
             }}
           />
 
