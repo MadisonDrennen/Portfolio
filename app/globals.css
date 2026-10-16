@@ -591,7 +591,16 @@ input:focus, textarea:focus, select:focus { outline: none; }
   from { background-position: 0% 50%; }
   to   { background-position: 200% 50%; }
 }
-/* Laptop stack float (keeps each piece's own transform via translate) */
+/* Laptop screen: scroll a full-page capture top to bottom, then hand off */
+.laptop-screen { container-type: size; }
+.laptop-scroll { animation: laptopScroll 11s cubic-bezier(0.45, 0, 0.55, 1) 0.9s both; }
+@keyframes laptopScroll {
+  0%   { transform: translateY(0); }
+  88%  { transform: translateY(calc(-100% + 100cqh)); }
+  100% { transform: translateY(calc(-100% + 100cqh)); }
+}
+
+/* Laptop float (uses translate so it never fights a transform) */
 .laptop-float { animation: laptopFloat 7s ease-in-out infinite; }
 @keyframes laptopFloat {
   0%, 100% { translate: 0 0; }

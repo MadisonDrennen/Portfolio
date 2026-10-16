@@ -15,7 +15,7 @@ export default function RedesignCTA() {
       }}
     >
       <div className="grid md:grid-cols-12 items-center">
-        <div className="relative z-10 md:col-span-6 p-8 md:p-12 lg:p-14">
+        <div className="relative z-10 md:col-span-6 lg:col-span-5 p-8 md:p-12 lg:p-14">
           <p className="font-mono text-[0.6rem] font-medium tracking-[0.25em] uppercase text-petal mb-4">
             ✦ &nbsp; Your Turn
           </p>
@@ -44,7 +44,7 @@ export default function RedesignCTA() {
           </div>
         </div>
 
-        <div className="relative md:col-span-6 h-[380px] sm:h-[460px] md:h-[540px] px-4 md:px-0">
+        <div className="relative md:col-span-6 lg:col-span-7 py-8 md:py-12 px-4 md:pl-0 md:pr-8">
           <LaptopStack />
         </div>
       </div>
