@@ -36,9 +36,9 @@ export default function Redesigns() {
       data-nav-theme="dark"
       className="relative text-snow overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28"
       style={{
-        // Bright Berry, lit from the centre and deepening to Raspberry.
+        // Toned-down Berry, lit from the centre and deepening to wine.
         background:
-          "radial-gradient(70% 60% at 50% 42%, #D63389 0%, #BA006D 45%, #9A0B5A 80%, #89235B 100%)",
+          "radial-gradient(70% 60% at 50% 42%, #A8166C 0%, #8E1259 45%, #761A4D 80%, #5E1642 100%)",
       }}
     >
 
