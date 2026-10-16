@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SiteScroll from "@/components/ui/SiteScroll";
 import GalleryCarousel from "@/components/ui/GalleryCarousel";
+import CaseStudyV2 from "@/components/case-study/CaseStudyV2";
 
 interface PageProps {
   params: { slug: string };
@@ -39,6 +40,18 @@ export default function CaseStudyPage({ params }: PageProps) {
 
   const currentIndex = projects.findIndex((p) => p.slug === params.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
+
+  if (project.chapters) {
+    return (
+      <>
+        <Navbar />
+        <main className="bg-snow min-h-screen">
+          <CaseStudyV2 project={project} next={nextProject} />
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>

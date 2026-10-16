@@ -37,6 +37,8 @@ export type GalleryRow = {
   /** Render as a swipeable carousel instead of a grid (images only). */
   carousel?: boolean;
   items: GalleryItem[];
+  /** Chapter id this row belongs to (see Project.chapters). */
+  chapter?: string;
 };
 
 export type PdfAsset = {
@@ -66,6 +68,15 @@ export interface Project {
   pdfs?: PdfAsset[];
   /** Live site shown in a browser window that scrolls a full-page capture. */
   liveSite?: { url: string; scroll: string };
+  /** The client's own colours, used by the chapter case-study layout. */
+  brand?: { dark: string; accent: string };
+  /** Public URL of the live site, shown in the quick facts. */
+  liveUrl?: string;
+  /** Services for the quick-facts row. */
+  services?: string[];
+  /** When set, the case study renders in the chapter layout, grouping
+   *  gallery rows by their `chapter` id in this order. */
+  chapters?: { id: string; title: string; caption: string; tone: "light" | "dark" }[];
 }
 
 export const projects: Project[] = [
@@ -83,6 +94,15 @@ export const projects: Project[] = [
     ],
     tags: ["Web Design & Build", "Brand Systems", "Content & Social"],
     accentColor: "#D4255F",
+    brand: { dark: "#040C0E", accent: "#00CDFD" },
+    liveUrl: "https://gymrise.com",
+    services: ["Website Design & Build", "Brand System", "Social Content", "Reels & Motion"],
+    chapters: [
+      { id: "website", title: "The Website", caption: "Designed and built end to end. Every page, every section, every interaction.", tone: "light" },
+      { id: "reels", title: "Reels & Motion", caption: "Short-form motion that carries the brand into every feed.", tone: "dark" },
+      { id: "social", title: "Social Content", caption: "A weekly content system: client wins, testimonials, monthly numbers and seasonal campaigns.", tone: "light" },
+      { id: "mockups", title: "In the Wild", caption: "The finished site across every screen it lives on.", tone: "dark" },
+    ],
     year: "2026",
     caseStudyAvailable: true,
     heroImage: "/work/gymrise/cover.jpg",
@@ -92,7 +112,7 @@ export const projects: Project[] = [
     approach:
       "I designed and built the entire GYMRISE website myself, every page, every interaction, every section, then extended the same visual system across the brand kit, social campaigns, sales creative, and email signatures.\n\nEverything lives together: the same typography, the same energy, the same point of view. Owners, members, and prospects all see one brand, no matter where they meet it.",
     results: [
-      { value: "$224M+", label: "In Client PT Sales" },
+      { value: "$231M+", label: "In Client PT Sales" },
       { value: "360+", label: "Active Operators" },
       { value: "40+", label: "Markets Covered" },
       { value: "1 System", label: "End-to-End Brand" },
@@ -101,6 +121,7 @@ export const projects: Project[] = [
     gallery: [
       // Row 1, THE BUILD: the GYMRISE website pages, full-width sequence
       {
+        chapter: "website",
         label: "Designed & Built, The GYMRISE Website",
         aspect: "3/4",
         fit: "cover",
@@ -114,6 +135,7 @@ export const projects: Project[] = [
       // Reels & Motion (mockup-approved exports). Identity is 4:5, so the
       // row letterboxes on GYMRISE dark instead of cropping it.
       {
+        chapter: "reels",
         label: "Reels & Motion",
         aspect: "9/16",
         fit: "contain",
@@ -129,6 +151,7 @@ export const projects: Project[] = [
       // Social media designs. Mockup-approved exports: names and clubs are
       // already placeholder text, numbers are real, so no redaction needed.
       {
+        chapter: "social",
         label: "Client Wins & Recognition",
         aspect: "4/5",
         fit: "cover",
@@ -140,6 +163,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         label: "Testimonials & Sales Confidence",
         aspect: "4/5",
         fit: "cover",
@@ -151,6 +175,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         label: "Monthly Numbers & Program Pillars",
         aspect: "4/5",
         fit: "cover",
@@ -162,6 +187,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         aspect: "32/15",
         fit: "cover",
         items: [
@@ -169,6 +195,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "social",
         label: "Seasonal Campaigns",
         aspect: "4/5",
         fit: "cover",
@@ -180,6 +207,7 @@ export const projects: Project[] = [
       },
       // Website mockups, after the social work
       {
+        chapter: "mockups",
         label: "Website Mockups",
         aspect: "16/9",
         fit: "cover",
