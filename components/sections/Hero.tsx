@@ -5,17 +5,16 @@ import MorphGallery from "@/components/ui/morph-gallery";
 
 type Slide = { src: string; project: string; category: string; year: string };
 
-// Landscape work for wide screens.
+// Device mockups of the live sites, for wide screens.
 const DESKTOP: Slide[] = [
-  { src: "/hero/d-gymrise.jpg", project: "GYMRISE", category: "Website · Brand · Growth", year: "2026" },
-  { src: "/hero/d-kalero.jpg", project: "Kalero", category: "Website · E-commerce", year: "2026" },
-  { src: "/hero/d-socialmulli.jpg", project: "Social Mulli", category: "Website · Brand · Web Design", year: "2026" },
-  { src: "/hero/d-o2suites.jpg", project: "O2 Suites", category: "Website · Brand", year: "2026" },
-  { src: "/hero/d-socialmulli-brandkit.jpg", project: "Social Mulli", category: "Brand Kit · Print System", year: "2026" },
-  { src: "/hero/d-gymrise-brandkit.jpg", project: "GYMRISE", category: "Brand Kit · Digital System", year: "2026" },
-  { src: "/hero/d-rekmed.jpg", project: "RekMed", category: "Product Photography · Brand", year: "2025" },
-  { src: "/hero/d-peachy.jpg", project: "Peachy HVAC", category: "Website · Concept Design", year: "Ongoing" },
-  { src: "/hero/d-signatures.jpg", project: "Signature Bundle", category: "Email Signature System", year: "2026" },
+  { src: "/hero/m2-gymrise-devices.jpg", project: "GYMRISE", category: "Website · Brand · Growth", year: "2026" },
+  { src: "/hero/m2-kalero-site.jpg", project: "Kalero", category: "Website · E-commerce", year: "2026" },
+  { src: "/hero/m2-socialmulli-monitor.jpg", project: "Social Mulli", category: "Website · Brand · Web Design", year: "2026" },
+  { src: "/hero/m2-o2suites-site.jpg", project: "O2 Suites", category: "Website · Brand", year: "2026" },
+  { src: "/hero/m2-gymrise-site.jpg", project: "GYMRISE", category: "Website · Systems", year: "2026" },
+  { src: "/hero/m2-kalero-filters.jpg", project: "Kalero", category: "Website · Shop Experience", year: "2026" },
+  { src: "/hero/m2-socialmulli-devices.jpg", project: "Social Mulli", category: "Website · Responsive", year: "2026" },
+  { src: "/hero/m2-o2suites-office.jpg", project: "O2 Suites", category: "Website · In Practice", year: "2026" },
 ];
 
 // Phone-sized captures of the live sites, so a portrait screen is filled

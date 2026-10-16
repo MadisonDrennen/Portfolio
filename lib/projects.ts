@@ -85,7 +85,7 @@ export const projects: Project[] = [
     accentColor: "#D4255F",
     year: "2026",
     caseStudyAvailable: true,
-    heroImage: "/work/gymrise/hero.png",
+    heroImage: "/work/gymrise/cover.jpg",
     heroCompact: true,
     liveSite: { url: "https://gymrise.com", scroll: "/work/gymrise/site-full.jpg" },
     challenge:
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     accentColor: "#3B6EFF",
     year: "2026",
     caseStudyAvailable: true,
-    heroImage: "/work/social-mulli/hero.png",
+    heroImage: "/work/social-mulli/cover.jpg",
     heroCompact: true,
     challenge:
       "Social Mulli was launching as a no-nonsense marketing partner for gyms and local businesses. The brand had to feel grown-up, confident, and refreshingly direct, opposite of the over-promising agency stereotype.\n\nIt needed a complete identity, a website that converted on first read, and assets the team could ship the day they went live.",
@@ -246,29 +246,65 @@ export const projects: Project[] = [
         ],
       },
       // Row, Content & Post Graphics
+      // Reels & Motion (mockup-approved exports)
       {
-        label: "Content & Post Graphics",
+        label: "Reels & Motion",
+        aspect: "9/16",
+        fit: "cover",
+        items: [
+          { src: "/work/social-mulli/reels/website-redesign.mp4", alt: "Social Mulli website redesign reel", type: "video" },
+          { src: "/work/social-mulli/reels/website-before-after.mp4", alt: "Social Mulli website before and after reel", type: "video" },
+          { src: "/work/social-mulli/reels/we-do.mp4", alt: "Social Mulli what we do reel", type: "video" },
+          { src: "/work/social-mulli/reels/january.mp4", alt: "Social Mulli January reel", type: "video" },
+          { src: "/work/social-mulli/reels/pendulum.mp4", alt: "Social Mulli pendulum reel", type: "video" },
+        ],
+      },
+      // Social media designs. Mockup-approved exports: names are already
+      // placeholder text, so no redaction needed.
+      {
+        label: "Audit & Reporting Posts",
         aspect: "4/5",
         fit: "cover",
         items: [
-          { src: "/work/social-mulli/post-reps-graphics.png", alt: "REPS content graphics series" },
-          { src: "/work/social-mulli/post-static-graphics.png", alt: "Static post graphics system" },
-          { src: "/work/social-mulli/post-numbers-graphics.png", alt: "Honest Reporting post graphic" },
-          { src: "/work/social-mulli/post-office-hours.png", alt: "Office hours promo graphics" },
-          { src: "/work/social-mulli/post-reps.png", alt: "REPS campaign graphic" },
-          {
-            src: "/work/social-mulli/post-testimonial.png",
-            alt: "Client testimonial graphic",
-            redact: [
-              // Big quote block that mentions the client's name
-              { top: 36, height: 34, left: 5, width: 95 },
-              // Attribution block (name + company)
-              { top: 82, height: 10, left: 5, width: 40 },
-            ],
-          },
+          { src: "/work/social-mulli/social/bad-report-vs-good-report-1.jpg", alt: "Bad report vs good report post" },
+          { src: "/work/social-mulli/social/bad-report-vs-good-report-2.jpg", alt: "Bad report vs good report post, comparison" },
+          { src: "/work/social-mulli/social/what-a-real-audit-checks-1.jpg", alt: "What a real audit checks post" },
+          { src: "/work/social-mulli/social/what-a-real-audit-checks-2.jpg", alt: "What a real audit checks post, checklist" },
         ],
       },
-      // Row, Google Business Profile + Meta ads
+      {
+        label: "Meta Ads & Trial Offers",
+        aspect: "4/5",
+        fit: "cover",
+        items: [
+          { src: "/work/social-mulli/social/own-your-meta-account-1.jpg", alt: "Own your Meta account post" },
+          { src: "/work/social-mulli/social/own-your-meta-account-2.jpg", alt: "Own your Meta account post, steps" },
+          { src: "/work/social-mulli/social/trials-that-show-up-1.jpg", alt: "Trials that show up post" },
+          { src: "/work/social-mulli/social/trials-that-show-up-2.jpg", alt: "Trials that show up post, funnel" },
+        ],
+      },
+      {
+        label: "Marketing Tips Series",
+        aspect: "4/5",
+        fit: "cover",
+        items: [
+          { src: "/work/social-mulli/social/whats-leaking-1.jpg", alt: "What's leaking post" },
+          { src: "/work/social-mulli/social/whats-leaking-2.jpg", alt: "What's leaking post, breakdown" },
+          { src: "/work/social-mulli/social/make-ai-stop-looking-like-ai-1.jpg", alt: "Make AI stop looking like AI post" },
+          { src: "/work/social-mulli/social/make-ai-stop-looking-like-ai-2.jpg", alt: "Make AI stop looking like AI post, examples" },
+        ],
+      },
+      {
+        label: "Photo Posts & Graphics",
+        aspect: "4/5",
+        fit: "cover",
+        items: [
+          { src: "/work/social-mulli/social/photo-posts-1.jpg", alt: "Photo post, gym owner with tablet" },
+          { src: "/work/social-mulli/social/photo-posts-2.jpg", alt: "Photo post, laptop workflow" },
+          { src: "/work/social-mulli/social/post-graphics-1.jpg", alt: "Testimonial quote graphic" },
+          { src: "/work/social-mulli/social/post-graphics-2.jpg", alt: "Campaign post graphic" },
+        ],
+      },
       {
         label: "Google Business Profile & Meta Ads",
         aspect: "4/5",

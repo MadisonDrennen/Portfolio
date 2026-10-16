@@ -10,8 +10,8 @@ type Project = (typeof projects)[number];
 
 // Native hero-image proportions so nothing gets cropped.
 const HERO_ASPECT: Record<string, string> = {
-  gymrise: "4 / 3",
-  "social-mulli": "1 / 1",
+  gymrise: "16 / 9",
+  "social-mulli": "16 / 9",
   rekmed: "3 / 2",
   explorations: "4 / 3",
 };
