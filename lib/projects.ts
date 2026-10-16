@@ -277,17 +277,6 @@ export const projects: Project[] = [
           { src: "/work/social-mulli/originals/anim-every-gym-gets-leads.mp4", alt: "Every gym gets leads animated post", type: "video" },
         ],
       },
-      {
-        label: "Meta Ads",
-        aspect: "4/5",
-        fit: "contain",
-        bg: "transparent",
-        items: [
-          { src: "/work/social-mulli/meta-ad-busy-mom.png", alt: "Anytime Fitness Meta ad, Busy Mom 40+ program" },
-          { src: "/work/social-mulli/meta-ad-stay-strong.png", alt: "Anytime Fitness Meta ad, Stay Strong, Stay Steady (Ageless 65+)" },
-          { src: "/work/social-mulli/meta-ad-franklin-moms.png", alt: "Anytime Fitness Meta ad, Franklin Moms Reset campaign" },
-        ],
-      },
       // Website mockups, after the social work
       {
         label: "Website Mockups",
