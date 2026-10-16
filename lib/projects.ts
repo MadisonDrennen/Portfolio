@@ -238,7 +238,7 @@ export const projects: Project[] = [
     chapters: [
       { id: "website", title: "The Website", caption: "Designed and built from scratch. A site that converts on first read.", tone: "light" },
       { id: "reels", title: "Reels & Motion", caption: "Motion pieces that put the REPS point of view into every feed.", tone: "dark" },
-      { id: "social", title: "Social Content", caption: "Photo posts, post graphics, campaigns and Meta ads, all speaking one voice.", tone: "light" },
+      { id: "social", title: "Social Content", caption: "Photo posts, post graphics and campaigns, all speaking one voice.", tone: "light" },
       { id: "email", title: "Email Marketing", caption: "Campaign emails for gym owners: office hours, offers and new programs.", tone: "light" },
       { id: "mockups", title: "In the Wild", caption: "The finished site across every screen it lives on.", tone: "dark" },
     ],
@@ -311,18 +311,6 @@ export const projects: Project[] = [
           { src: "/work/social-mulli/originals/reps-lab.jpg", alt: "REPS Lab client portal post" },
           { src: "/work/social-mulli/originals/anim-weekly-report.mp4", alt: "Weekly report animated post", type: "video" },
           { src: "/work/social-mulli/originals/anim-every-gym-gets-leads.mp4", alt: "Every gym gets leads animated post", type: "video" },
-        ],
-      },
-      {
-        chapter: "social",
-        label: "Meta Ads",
-        aspect: "4/5",
-        fit: "contain",
-        bg: "transparent",
-        items: [
-          { src: "/work/social-mulli/meta-ad-busy-mom.png", alt: "Anytime Fitness Meta ad, Busy Mom 40+ program" },
-          { src: "/work/social-mulli/meta-ad-stay-strong.png", alt: "Anytime Fitness Meta ad, Stay Strong, Stay Steady (Ageless 65+)" },
-          { src: "/work/social-mulli/meta-ad-franklin-moms.png", alt: "Anytime Fitness Meta ad, Franklin Moms Reset campaign" },
         ],
       },
       {
