@@ -27,6 +27,10 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
   const accent = project.brand?.accent ?? project.accentColor;
   const host = project.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
   const hues = project.brand?.hues;
+  const light = project.brand?.tone === "light";
+  const gradient = project.brand?.titleGradient;
+  /** Pick a class for the dark or light opening. */
+  const tone = (d: string, l: string) => (light ? l : d);
   const titleSize = project.title.length > 8 ? "clamp(2rem, 8vw, 7.5rem)" : "clamp(3.5rem, 12.5vw, 12rem)";
   const titlePalette: Palette = {
     ink: [255, 243, 242],
@@ -55,15 +59,33 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
     <>
       {/* ── 1. Opening ── */}
       {/* No overflow clipping here: the cover hangs over into the results. */}
-      <section data-nav-theme="dark" className="relative overflow-x-clip text-snow" style={{ background: dark }}>
+      <section
+        data-nav-theme={light ? "light" : "dark"}
+        className={`relative overflow-x-clip ${tone("text-snow", "text-ink")}`}
+        style={{ background: light ? project.brand?.lightBg ?? "#FBF5F8" : dark }}
+      >
         <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `radial-gradient(60% 55% at 78% 18%, ${accent}33 0%, transparent 60%), radial-gradient(45% 40% at 10% 90%, ${accent}1f 0%, transparent 65%)`,
-            }}
-          />
-          {hues && (
+          {!light && (
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `radial-gradient(60% 55% at 78% 18%, ${accent}33 0%, transparent 60%), radial-gradient(45% 40% at 10% 90%, ${accent}1f 0%, transparent 65%)`,
+              }}
+            />
+          )}
+          {hues && light && (
+            <>
+              {/* Soft pastel hues that slowly drift */}
+              <div className="absolute -top-[25%] right-[-8%] w-[60%] h-[85%] rounded-full blur-[120px] opacity-[0.22] hero-drift" style={{ background: `radial-gradient(closest-side, ${accent}, transparent)` }} />
+              <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[70%] rounded-full blur-[120px] opacity-[0.2] hero-drift-slow" style={{ background: `radial-gradient(closest-side, ${hues[0]}, transparent)` }} />
+              {hues[1] && (
+                <div className="absolute top-[30%] left-[35%] w-[40%] h-[45%] rounded-full blur-[130px] opacity-[0.16] hero-drift" style={{ background: `radial-gradient(closest-side, ${hues[1]}, transparent)`, animationDelay: "-6s" }} />
+              )}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 40%, rgba(37,2,9,0.04) 100%)" }} />
+              <div className="absolute inset-0 opacity-[0.05] mix-blend-multiply" style={{ backgroundImage: GRAIN }} />
+            </>
+          )}
+          {hues && !light && (
             <>
               {/* Glowing hues that slowly drift */}
               <div className="absolute -top-[20%] right-[-10%] w-[70%] h-[90%] rounded-full blur-[110px] opacity-60 hero-drift" style={{ background: `radial-gradient(closest-side, ${accent}, transparent)` }} />
@@ -80,10 +102,10 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
         </div>
         <div className={`relative ${SITE_GRID} pt-28 md:pt-32`}>
           <div className="flex items-center gap-2 mb-8 md:mb-10 font-mono text-[0.6rem] font-medium tracking-[0.22em] uppercase">
-            <Link href="/" className="text-snow/45 hover:text-snow transition-colors">Home</Link>
-            <span className="text-snow/25">/</span>
-            <Link href="/#work" className="text-snow/45 hover:text-snow transition-colors">Work</Link>
-            <span className="text-snow/25">/</span>
+            <Link href="/" className={tone("text-snow/45 hover:text-snow", "text-ink/45 hover:text-ink") + " transition-colors"}>Home</Link>
+            <span className={tone("text-snow/25", "text-ink/25")}>/</span>
+            <Link href="/#work" className={tone("text-snow/45 hover:text-snow", "text-ink/45 hover:text-ink") + " transition-colors"}>Work</Link>
+            <span className={tone("text-snow/25", "text-ink/25")}>/</span>
             <span style={{ color: accent }}>{project.title}</span>
           </div>
 
@@ -103,22 +125,30 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
               </div>
             ) : (
               <h1
-                className="relative z-[2] font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2"
-                style={{ fontSize: titleSize }}
+                className={`relative z-[2] font-display font-bold uppercase leading-[0.86] tracking-[-0.05em] pb-2 ${gradient ? "title-gradient" : ""}`}
+                style={{
+                  fontSize: titleSize,
+                  ...(gradient && {
+                    backgroundImage: `linear-gradient(90deg, ${[...gradient, gradient[0]].join(", ")})`,
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    color: "transparent",
+                  }),
+                }}
               >
                 {project.title}
               </h1>
             )}
 
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-8 md:mt-10">
-              <p className="lg:col-span-6 font-sans text-base md:text-lg text-snow/75 leading-relaxed max-w-xl">
+              <p className={`lg:col-span-6 font-sans text-base md:text-lg leading-relaxed max-w-xl ${tone("text-snow/75", "text-ink/70")}`}>
                 {project.shortDescription}
               </p>
-              <dl className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-snow/15 pt-6 self-start">
+              <dl className={`lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t pt-6 self-start ${tone("border-snow/15", "border-ink/10")}`}>
                 {facts.map((f) => (
                   <div key={f.k} className={f.k === "Services" ? "col-span-2" : ""}>
-                    <dt className="font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase text-snow/45 mb-2">{f.k}</dt>
-                    <dd className="font-sans text-sm text-snow/90 leading-snug">{f.v}</dd>
+                    <dt className={`font-mono text-[0.55rem] font-medium tracking-[0.22em] uppercase mb-2 ${tone("text-snow/45", "text-ink/45")}`}>{f.k}</dt>
+                    <dd className={`font-sans text-sm leading-snug ${tone("text-snow/90", "text-ink/85")}`}>{f.v}</dd>
                   </div>
                 ))}
                 {(project.liveUrl || project.pdfs?.length) && (
@@ -156,8 +186,12 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
           {project.heroImage && (
             <div className="relative mt-10 md:mt-14 -mb-24 md:-mb-40 z-10">
               <div
-                className="overflow-hidden rounded-[18px] md:rounded-[26px] ring-1 ring-snow/10"
-                style={{ boxShadow: `0 50px 120px -40px ${accent}55, 0 40px 90px -40px rgba(0,0,0,0.8)` }}
+                className={`overflow-hidden rounded-[18px] md:rounded-[26px] ring-1 ${tone("ring-snow/10", "ring-ink/5")}`}
+                style={{
+                  boxShadow: light
+                    ? `0 50px 110px -45px ${accent}55, 0 30px 70px -40px rgba(37,2,9,0.35)`
+                    : `0 50px 120px -40px ${accent}55, 0 40px 90px -40px rgba(0,0,0,0.8)`,
+                }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={project.heroImage} alt={`${project.title}, cover`} className="block w-full h-auto" loading="eager" />

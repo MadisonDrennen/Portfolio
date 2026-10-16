@@ -69,7 +69,17 @@ export interface Project {
   /** Live site shown in a browser window that scrolls a full-page capture. */
   liveSite?: { url: string; scroll: string };
   /** The client's own colours, used by the chapter case-study layout. */
-  brand?: { dark: string; accent: string; /** Extra glow colours for a richer opening. */ hues?: string[] };
+  brand?: {
+    dark: string;
+    accent: string;
+    /** Extra glow colours for a richer opening. */
+    hues?: string[];
+    /** "light" renders the opening on a light background. */
+    tone?: "dark" | "light";
+    lightBg?: string;
+    /** Colours for a gradient-filled title. */
+    titleGradient?: string[];
+  };
   /** Public URL of the live site, shown in the quick facts. */
   liveUrl?: string;
   /** Services for the quick-facts row. */
@@ -341,7 +351,14 @@ export const projects: Project[] = [
     ],
     tags: ["Product Marketing", "Content Strategy", "Social Video"],
     accentColor: "#2DB891",
-    brand: { dark: "#0D0B12", accent: "#2DB891", hues: ["#B03AE0", "#FF4FA3"] },
+    brand: {
+      dark: "#0D0B12",
+      accent: "#2DB891",
+      hues: ["#B03AE0", "#FF4FA3"],
+      tone: "light",
+      lightBg: "#FBF6FB",
+      titleGradient: ["#7B2FF7", "#E0389A", "#FF7A1A", "#F5B800", "#2DB891", "#1FA2FF"],
+    },
     services: ["Product Marketing", "Content Strategy", "Social Video", "Product Photography"],
     chapters: [
       { id: "photo", title: "Product Photography", caption: "Hero product shots that make a study tool feel like something you want on your desk.", tone: "light" },

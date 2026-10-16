@@ -582,6 +582,15 @@ input:focus, textarea:focus, select:focus { outline: none; }
   0%, 100% { transform: translate(0, 0) scale(1); }
   50%      { transform: translate(-4%, 3%) scale(1.08); }
 }
+/* Slowly shifting gradient fill for case-study titles */
+.title-gradient {
+  background-size: 200% 100%;
+  animation: titleGradient 9s linear infinite;
+}
+@keyframes titleGradient {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero-drift, .hero-drift-slow { animation: none; }
+  .hero-drift, .hero-drift-slow, .title-gradient { animation: none; }
 }
