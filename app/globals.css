@@ -591,6 +591,12 @@ input:focus, textarea:focus, select:focus { outline: none; }
   from { background-position: 0% 50%; }
   to   { background-position: 200% 50%; }
 }
+/* Laptop stack float (keeps each piece's own transform via translate) */
+.laptop-float { animation: laptopFloat 7s ease-in-out infinite; }
+@keyframes laptopFloat {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero-drift, .hero-drift-slow, .title-gradient { animation: none; }
+  .hero-drift, .hero-drift-slow, .title-gradient, .laptop-float { animation: none; }
 }

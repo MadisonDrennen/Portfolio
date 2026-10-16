@@ -1,14 +1,8 @@
 import ChromeBorder from "@/components/ui/chrome-border";
+import LaptopStack from "./LaptopStack";
 
 const EMAIL = "madisoninmarketing@gmail.com";
 
-// Live redesigns, fanned out on the right of the card.
-const SHOTS = [
-  { src: "/work/redesigns/gymrise-1.jpg", alt: "GYMRISE homepage", cls: "left-[4%] top-[14%] rotate-[-6deg] z-[1]" },
-  { src: "/work/redesigns/kalero-1.jpg", alt: "Kalero homepage", cls: "right-[2%] top-[6%] rotate-[5deg] z-[2]" },
-  { src: "/work/redesigns/socialmulli-1.jpg", alt: "Social Mulli homepage", cls: "left-[14%] bottom-[6%] rotate-[3deg] z-[3]" },
-  { src: "/work/redesigns/o2suites-1.jpg", alt: "O2 Suites homepage", cls: "right-[8%] bottom-[12%] rotate-[-4deg] z-[4]" },
-];
 
 /** End-of-case-study call to action for a website redesign, used on the last project in the loop. */
 export default function RedesignCTA() {
@@ -50,16 +44,8 @@ export default function RedesignCTA() {
           </div>
         </div>
 
-        <div aria-hidden className="relative md:col-span-6 h-[300px] sm:h-[360px] md:h-[440px]">
-          {SHOTS.map((s) => (
-            <div
-              key={s.src}
-              className={`absolute w-[58%] md:w-[56%] aspect-[16/10] rounded-[10px] overflow-hidden ring-2 ring-white/80 shadow-[0_30px_60px_-20px_rgba(37,2,9,0.75)] ${s.cls}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={s.src} alt="" loading="lazy" className="w-full h-full object-cover" />
-            </div>
-          ))}
+        <div className="relative md:col-span-6 h-[380px] sm:h-[460px] md:h-[540px] px-4 md:px-0">
+          <LaptopStack />
         </div>
       </div>
     </div>
