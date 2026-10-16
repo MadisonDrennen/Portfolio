@@ -18,10 +18,13 @@ import { cn } from "@/lib/utils";
 export default function ChromeBorder({
   children,
   thickness = 2,
+  fill,
   className,
 }: {
   children: React.ReactNode;
   thickness?: number;
+  /** Solid colour behind the child, for buttons with see-through backgrounds. */
+  fill?: string;
   className?: string;
 }) {
   const shaderRef = React.useRef<HTMLSpanElement>(null);
@@ -110,7 +113,9 @@ export default function ChromeBorder({
         aria-hidden
         className="absolute inset-0 rounded-full overflow-hidden [&_canvas]:brightness-[1.18] [&_canvas]:!absolute [&_canvas]:!inset-0 [&_canvas]:!w-full [&_canvas]:!h-full [&_canvas]:!rounded-full"
       />
-      <span className="relative inline-flex rounded-full">{children}</span>
+      <span className="relative inline-flex rounded-full" style={fill ? { background: fill } : undefined}>
+        {children}
+      </span>
     </span>
   );
 }

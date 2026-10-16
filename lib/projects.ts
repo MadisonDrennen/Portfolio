@@ -201,7 +201,7 @@ export const projects: Project[] = [
     accentColor: "#3B6EFF",
     year: "2026",
     caseStudyAvailable: true,
-    heroImage: "/work/social-mulli/cover.jpg",
+    heroImage: "/work/social-mulli/cover-monitor.jpg",
     heroCompact: true,
     challenge:
       "Social Mulli was launching as a no-nonsense marketing partner for gyms and local businesses. The brand had to feel grown-up, confident, and refreshingly direct, opposite of the over-promising agency stereotype.\n\nIt needed a complete identity, a website that converted on first read, and assets the team could ship the day they went live.",
@@ -429,7 +429,7 @@ export const projects: Project[] = [
     accentColor: "#8CB6DF",
     year: "Ongoing",
     caseStudyAvailable: true,
-    heroImage: "/work/explorations/02-concept.png",
+    heroImage: "/work/explorations/cover.jpg",
     heroCompact: true,
     challenge:
       "A running sketchbook of ideas, campaigns I'd ship if the brief existed, brand systems I'd want to build, type and layout experiments.\n\nLess a project, more a feed of thinking.",

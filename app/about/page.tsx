@@ -259,7 +259,7 @@ export default function AboutPage() {
           <div className="chrome-aura chrome-aura--berry -top-20 left-1/2 -translate-x-1/2 w-[50%] h-[18rem] opacity-50" />
 
           <div className="relative max-w-3xl mx-auto text-center">
-            <SectionLabel label="Say Hi" className="justify-center" />
+            <SectionLabel label="Get in Touch" className="justify-center" />
             <h2
               className="font-display font-bold text-ink leading-[1.0] tracking-[-0.045em] mt-6 mb-6 pb-1"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}

@@ -1,5 +1,6 @@
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE_GRID } from "@/components/ui/grid";
+import ChromeBorder from "@/components/ui/chrome-border";
 
 const EMAIL = "madisoninmarketing@gmail.com";
 
@@ -48,13 +49,17 @@ export default function Contact() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-3 flex-shrink-0">
-              <a href={`mailto:${EMAIL}?subject=Website%20redesign`} className="btn-primary px-7 py-4">
-                Start a Redesign
-                <span>→</span>
-              </a>
-              <a href={`mailto:${EMAIL}`} className="btn-outline-dark px-7 py-4">
-                Just Say Hi
-              </a>
+              <ChromeBorder>
+                <a href={`mailto:${EMAIL}?subject=Website%20redesign`} className="btn-primary px-7 py-4">
+                  Start a Redesign
+                  <span>→</span>
+                </a>
+              </ChromeBorder>
+              <ChromeBorder fill="#FFF3F2">
+                <a href={`mailto:${EMAIL}?subject=Let%27s%20talk`} className="btn-outline-dark px-7 py-4">
+                  Let&apos;s Talk
+                </a>
+              </ChromeBorder>
             </div>
           </div>
         </RevealOnScroll>

@@ -13,7 +13,7 @@ const HERO_ASPECT: Record<string, string> = {
   gymrise: "16 / 9",
   "social-mulli": "16 / 9",
   rekmed: "3 / 2",
-  explorations: "4 / 3",
+  explorations: "16 / 9",
 };
 
 // Each spread gets its own asymmetric placement on the 12-col grid (lg+).
@@ -93,8 +93,8 @@ export default function FeaturedWork() {
           <p className="font-sans text-sm font-normal text-snow/55 mb-5">
             More work, process notes, and explorations, happy to share.
           </p>
-          <a href="mailto:madisoninmarketing@gmail.com" className="btn-primary px-8 py-4">
-            Say Hi
+          <a href="mailto:madisoninmarketing@gmail.com?subject=Let%27s%20talk" className="btn-primary px-8 py-4">
+            Let&apos;s Talk
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </RevealOnScroll>
