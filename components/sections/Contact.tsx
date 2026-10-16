@@ -55,11 +55,9 @@ export default function Contact() {
                   <span>→</span>
                 </a>
               </ChromeBorder>
-              <ChromeBorder fill="#FFF3F2">
-                <a href={`mailto:${EMAIL}?subject=Let%27s%20talk`} className="btn-outline-dark px-7 py-4">
-                  Let&apos;s Talk
-                </a>
-              </ChromeBorder>
+              <a href={`mailto:${EMAIL}?subject=Let%27s%20talk`} className="btn-outline-dark px-7 py-4">
+                Let&apos;s Talk
+              </a>
             </div>
           </div>
         </RevealOnScroll>

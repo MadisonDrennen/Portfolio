@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
  */
 export default function ChromeBorder({
   children,
-  thickness = 2,
+  thickness = 1.5,
   fill,
   className,
 }: {
