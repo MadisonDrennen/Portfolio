@@ -277,6 +277,17 @@ export const projects: Project[] = [
           { src: "/work/social-mulli/originals/anim-every-gym-gets-leads.mp4", alt: "Every gym gets leads animated post", type: "video" },
         ],
       },
+      {
+        label: "Meta Ads",
+        aspect: "4/5",
+        fit: "contain",
+        bg: "transparent",
+        items: [
+          { src: "/work/social-mulli/meta-ad-busy-mom.png", alt: "Anytime Fitness Meta ad, Busy Mom 40+ program" },
+          { src: "/work/social-mulli/meta-ad-stay-strong.png", alt: "Anytime Fitness Meta ad, Stay Strong, Stay Steady (Ageless 65+)" },
+          { src: "/work/social-mulli/meta-ad-franklin-moms.png", alt: "Anytime Fitness Meta ad, Franklin Moms Reset campaign" },
+        ],
+      },
       // Website mockups, after the social work
       {
         label: "Website Mockups",
@@ -287,24 +298,7 @@ export const projects: Project[] = [
         ],
       },
       // Row 2, Dashboard mockup + laptop website mockup, side by side
-      {
-        label: "Live Site & Device Mockup",
-        aspect: "4/3",
-        fit: "contain",
-        items: [
-          { src: "/work/social-mulli/05-concept.png", alt: "Social Mulli, marketing audit dashboard mockup" },
-          { src: "/work/social-mulli/site-mockup.png", alt: "Social Mulli, site shown on device" },
-        ],
-      },
       // Row 3, Brand touchpoints
-      {
-        label: "Brand Touchpoints",
-        aspect: "1.91/1",
-        fit: "cover",
-        items: [
-          { src: "/work/social-mulli/02-og.png", alt: "Social Mulli, brand positioning card" },
-        ],
-      },
       // Row 3, Email signature design bundle (iPad mockup)
       // Row 4, Email signature system (dark + light modes)
       {
