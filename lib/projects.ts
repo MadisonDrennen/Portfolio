@@ -178,6 +178,15 @@ export const projects: Project[] = [
           { src: "/work/gymrise/social/halloween-2.jpg", alt: "Halloween campaign post" },
         ],
       },
+      // Website mockups, after the social work
+      {
+        label: "Website Mockups",
+        aspect: "16/9",
+        fit: "cover",
+        items: [
+          { src: "/hero/m2-gymrise-site.jpg", alt: "GYMRISE website on laptop and floating screens" },
+        ],
+      },
     ],
   },
   {
@@ -216,29 +225,11 @@ export const projects: Project[] = [
         label: "Designed & Built, The Social Mulli Website",
         aspect: "3/4",
         fit: "cover",
+        carousel: true,
         items: [
           { src: "/work/social-mulli/site-01.jpg", alt: "Social Mulli website, homepage & marketing system pillars" },
           { src: "/work/social-mulli/site-02.jpg", alt: "Social Mulli website, services & client transformations" },
           { src: "/work/social-mulli/site-03.jpg", alt: "Social Mulli website, FAQs, results & next-step CTA" },
-        ],
-      },
-      // Row 2, Dashboard mockup + laptop website mockup, side by side
-      {
-        label: "Live Site & Device Mockup",
-        aspect: "4/3",
-        fit: "contain",
-        items: [
-          { src: "/work/social-mulli/05-concept.png", alt: "Social Mulli, marketing audit dashboard mockup" },
-          { src: "/work/social-mulli/site-mockup.png", alt: "Social Mulli, site shown on device" },
-        ],
-      },
-      // Row 3, Brand touchpoints
-      {
-        label: "Brand Touchpoints",
-        aspect: "1.91/1",
-        fit: "cover",
-        items: [
-          { src: "/work/social-mulli/02-og.png", alt: "Social Mulli, brand positioning card" },
         ],
       },
       // Row, Content & Post Graphics
@@ -295,6 +286,34 @@ export const projects: Project[] = [
           { src: "/work/social-mulli/meta-ad-busy-mom.png", alt: "Anytime Fitness Meta ad, Busy Mom 40+ program" },
           { src: "/work/social-mulli/meta-ad-stay-strong.png", alt: "Anytime Fitness Meta ad, Stay Strong, Stay Steady (Ageless 65+)" },
           { src: "/work/social-mulli/meta-ad-franklin-moms.png", alt: "Anytime Fitness Meta ad, Franklin Moms Reset campaign" },
+        ],
+      },
+      // Website mockups, after the social work
+      {
+        label: "Website Mockups",
+        aspect: "16/9",
+        fit: "cover",
+        items: [
+          { src: "/hero/m2-socialmulli-devices.jpg", alt: "Social Mulli website across laptop, tablet and phone" },
+        ],
+      },
+      // Row 2, Dashboard mockup + laptop website mockup, side by side
+      {
+        label: "Live Site & Device Mockup",
+        aspect: "4/3",
+        fit: "contain",
+        items: [
+          { src: "/work/social-mulli/05-concept.png", alt: "Social Mulli, marketing audit dashboard mockup" },
+          { src: "/work/social-mulli/site-mockup.png", alt: "Social Mulli, site shown on device" },
+        ],
+      },
+      // Row 3, Brand touchpoints
+      {
+        label: "Brand Touchpoints",
+        aspect: "1.91/1",
+        fit: "cover",
+        items: [
+          { src: "/work/social-mulli/02-og.png", alt: "Social Mulli, brand positioning card" },
         ],
       },
       // Row 3, Email signature design bundle (iPad mockup)
