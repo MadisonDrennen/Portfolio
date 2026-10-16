@@ -297,7 +297,7 @@ export default function CaseStudyV2({ project, next }: { project: Project; next:
                 <p className="font-mono text-[0.6rem] font-medium tracking-[0.25em] uppercase text-snow/50 mb-4">Next Project</p>
                 <p
                   className="font-display font-bold uppercase leading-[0.9] tracking-[-0.045em] mb-6"
-                  style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.75rem)" }}
+                  style={{ fontSize: next.title.length > 8 ? "clamp(2rem, 3vw, 3rem)" : "clamp(2.5rem, 5.5vw, 4.75rem)" }}
                 >
                   {next.title}
                 </p>

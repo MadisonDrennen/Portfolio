@@ -341,6 +341,13 @@ export const projects: Project[] = [
     ],
     tags: ["Product Marketing", "Content Strategy", "Social Video"],
     accentColor: "#2DB891",
+    brand: { dark: "#0D0B12", accent: "#2DB891", hues: ["#B03AE0", "#FF4FA3"] },
+    services: ["Product Marketing", "Content Strategy", "Social Video", "Product Photography"],
+    chapters: [
+      { id: "photo", title: "Product Photography", caption: "Hero product shots that make a study tool feel like something you want on your desk.", tone: "light" },
+      { id: "video", title: "Social Video", caption: "Short-form video built for nursing students: study tips, giveaways and product drops.", tone: "dark" },
+      { id: "stills", title: "Promotional Stills", caption: "Campaign imagery for launches, promos and the product pages.", tone: "light" },
+    ],
     year: "2025",
     caseStudyAvailable: true,
     heroImage: "/rekmed-hero.jpg",
@@ -349,15 +356,9 @@ export const projects: Project[] = [
       "RekMed was scaling its presence in the healthcare education space and needed a more elevated, cohesive digital experience to match its growth.\n\nThe opportunity: enhance social, refine visual consistency, and elevate product presentation, creating a more polished, trustworthy, and engaging experience for nursing students and their educators.",
     approach:
       "I focused on elevating the brand's overall digital presence through a strategy-first approach to content and design.\n\nThis included enhancing social media content, refining visual consistency, and improving product presentation across the website. I built structured content calendars and created cohesive visuals that aligned both educational value and product promotion.\n\nEvery touchpoint was designed to feel polished, intentional, and aligned with the brand's growth.",
-    results: [
-      { value: "5x/Week", label: "Consistent Content Execution" },
-      { value: "Multi-Platform", label: "Content System Implementation" },
-      { value: "Stronger", label: "Brand Consistency & Positioning" },
-      { value: "Improved", label: "Engagement & Audience Trust" },
-    ],
-    resultsCaption: "Focus: Building consistency, trust, and conversion through strategic content.",
     gallery: [
       {
+        chapter: "photo",
         label: "Product & Brand Photography",
         aspect: "3/2",
         fit: "cover",
@@ -366,6 +367,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "video",
         label: "Social Video Content",
         aspect: "9/16",
         fit: "cover",
@@ -377,6 +379,7 @@ export const projects: Project[] = [
         ],
       },
       {
+        chapter: "stills",
         label: "Promotional Stills",
         aspect: "3/4",
         fit: "cover",
