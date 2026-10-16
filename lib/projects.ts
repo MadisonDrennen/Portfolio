@@ -36,6 +36,8 @@ export type GalleryRow = {
   narrow?: boolean;
   /** Render as a swipeable carousel instead of a grid (images only). */
   carousel?: boolean;
+  /** Tall images (emails, full pages): show the top, scroll to the bottom on hover. */
+  scrollOnHover?: boolean;
   items: GalleryItem[];
   /** Chapter id this row belongs to (see Project.chapters). */
   chapter?: string;
@@ -237,6 +239,7 @@ export const projects: Project[] = [
       { id: "website", title: "The Website", caption: "Designed and built from scratch. A site that converts on first read.", tone: "light" },
       { id: "reels", title: "Reels & Motion", caption: "Motion pieces that put the REPS point of view into every feed.", tone: "dark" },
       { id: "social", title: "Social Content", caption: "Photo posts, post graphics, campaigns and Meta ads, all speaking one voice.", tone: "light" },
+      { id: "email", title: "Email Marketing", caption: "Campaign emails for gym owners: offers, results and new programs. Hover to read the full email.", tone: "light" },
       { id: "mockups", title: "In the Wild", caption: "The finished site across every screen it lives on.", tone: "dark" },
     ],
     year: "2026",
@@ -320,6 +323,16 @@ export const projects: Project[] = [
           { src: "/work/social-mulli/meta-ad-busy-mom.png", alt: "Anytime Fitness Meta ad, Busy Mom 40+ program" },
           { src: "/work/social-mulli/meta-ad-stay-strong.png", alt: "Anytime Fitness Meta ad, Stay Strong, Stay Steady (Ageless 65+)" },
           { src: "/work/social-mulli/meta-ad-franklin-moms.png", alt: "Anytime Fitness Meta ad, Franklin Moms Reset campaign" },
+        ],
+      },
+      {
+        chapter: "email",
+        aspect: "3/5",
+        fit: "cover",
+        scrollOnHover: true,
+        items: [
+          { src: "/work/social-mulli/emails/marketing-minimum.jpg", alt: "Email: New marketing spend minimum? We've got you" },
+          { src: "/work/social-mulli/emails/women-50-longevity.jpg", alt: "Email: Women 50+ longevity ad campaign walkthrough" },
         ],
       },
       // Website mockups, after the social work
@@ -466,6 +479,16 @@ export const projects: Project[] = [
         items: [
           { src: "/hero/m2-kalero-filters.jpg", alt: "Kalero air filters website, product pages" },
           { src: "/hero/m2-o2suites-office.jpg", alt: "O2 Suites website on a desktop in a wellness office" },
+        ],
+      },
+      {
+        chapter: "web",
+        label: "Kalero, Full Site",
+        aspect: "2/3",
+        fit: "cover",
+        narrow: true,
+        items: [
+          { src: "/work/explorations/kalero-full-site.jpg", alt: "Kalero website, full homepage layout" },
         ],
       },
       {

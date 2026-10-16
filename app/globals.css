@@ -601,6 +601,11 @@ input:focus, textarea:focus, select:focus { outline: none; }
   100% { transform: translateY(calc(-100% + 100cqh)); }
 }
 
+/* Tall images in galleries: scroll to the bottom on hover */
+.hover-scroll { container-type: size; }
+.hover-scroll-img { transition: transform 6s cubic-bezier(0.45, 0, 0.55, 1); }
+.hover-scroll:hover .hover-scroll-img { transform: translateY(calc(-100% + 100cqh)); transition-duration: 9s; }
+
 /* Laptop float (uses translate so it never fights a transform) */
 .laptop-float { animation: laptopFloat 7s ease-in-out infinite; }
 @keyframes laptopFloat {

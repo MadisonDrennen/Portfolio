@@ -59,7 +59,7 @@ export default function GalleryRowView({
               }
             >
               <div
-                className={`group relative overflow-hidden ${
+                className={`group relative overflow-hidden ${row.scrollOnHover ? "hover-scroll" : ""} ${
                   phones
                     ? "rounded-[21px] md:rounded-[24px]"
                     : isTransparent
@@ -88,7 +88,11 @@ export default function GalleryRowView({
                     src={item.src}
                     alt={item.alt}
                     loading="lazy"
-                    className={`w-full h-full object-${fit} transition-transform duration-700 group-hover:scale-[1.02]`}
+                    className={
+                      row.scrollOnHover
+                        ? "absolute inset-x-0 top-0 w-full h-auto hover-scroll-img"
+                        : `w-full h-full object-${fit} transition-transform duration-700 group-hover:scale-[1.02]`
+                    }
                   />
                 )}
 
@@ -108,7 +112,7 @@ export default function GalleryRowView({
                   />
                 ))}
 
-                {!isTransparent && !phones && item.type !== "video" && (
+                {!isTransparent && !phones && !row.scrollOnHover && item.type !== "video" && (
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
                     <p className="font-sans text-xs font-normal text-snow leading-snug">{item.alt}</p>
                   </div>
