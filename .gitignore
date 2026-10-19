@@ -53,5 +53,7 @@ yarn-error.log*
 /Intro Series-*.png
 /M Monogram Exports-*.png
 
-# claude code local config
-/.claude/
+# claude code local config (skills are shared; settings stay local)
+/.claude/*
+!/.claude/skills/
+/.claude/skills/**/node_modules/

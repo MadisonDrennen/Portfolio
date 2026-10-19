@@ -1,0 +1,8 @@
+{
+  "name": "portfolio-publisher-scripts",
+  "private": true,
+  "description": "Headless-browser helpers for the portfolio-publisher skill",
+  "dependencies": {
+    "puppeteer-core": "23.11.1"
+  }
+}
