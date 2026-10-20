@@ -29,7 +29,7 @@ const MOBILE: Slide[] = [
   { src: "/hero/m-o2suites-2.jpg", project: "O2 Suites", category: "Website · Patient Story", year: "2026" },
 ];
 
-const ROTATION_MS = 3800;
+const ROTATION_MS = 2800;
 
 /**
  * Shared grid container, so the caption's edges line up with the rest of
@@ -90,7 +90,7 @@ export default function Hero() {
           index={activeIdx}
           onIndexChange={setActiveIdx}
           autoplay={ROTATION_MS}
-          duration={1600}
+          duration={1200}
           thumbnails={false}
           arrows={slides === DESKTOP}
           pauseOnHover={false}
